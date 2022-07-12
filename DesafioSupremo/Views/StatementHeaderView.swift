@@ -1,0 +1,116 @@
+//
+//  StatementView.swift
+//  DesafioSupremo
+//
+//  Created by Fernando Crelick on 11/07/22.
+//
+
+import UIKit
+
+class StatementHeaderView: UIView {
+    //MARK: Properties
+    var balance: String? {
+        get{ return balanceLabel.text }
+        set{ balanceLabel.text = newValue}
+    }
+
+    private let balanceLocalizedLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 12)
+        label.text = LocaleKeys.balanceLocalizedLabel.localized
+
+        return label
+    }()
+
+    private let eyeButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(named: "eyeIcon-show"), for: .normal)
+        button.tintColor = ColorPalette.cyan
+
+        return button
+    }()
+    
+    private let localizedStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.spacing = 5
+
+        return stackView
+    }()
+
+    private let balanceLabel: UILabel = {
+        let label = UILabel()
+        label.font = .boldSystemFont(ofSize: 22)
+        label.textColor = ColorPalette.cyan
+
+        return label
+    }()
+
+    private let headerStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.spacing = 10
+        stackView.alignment = .leading
+
+        return stackView
+    }()
+
+    private let yourTransactionsLabel: UILabel = {
+        let label = UILabel()
+        label.font = .boldSystemFont(ofSize: 16)
+        label.text = LocaleKeys.yourTransactionsLabel.localized
+
+        return label
+    }()
+    
+    private let containerView: UIView = {
+        let view = UIView()
+        view.backgroundColor = ColorPalette.lightGrey
+
+        return view
+    }()
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+
+        setupView()
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+extension StatementHeaderView: ViewCoding {
+    func buildViewHierarchy() {
+        setupStackView()
+        addSubview(containerView)
+        addSubview(yourTransactionsLabel)
+        containerView.addSubview(headerStackView)
+    }
+
+    func setupConstraints() {
+        yourTransactionsLabel
+            .anchorHorizontal(left: leftAnchor, leftConstant: 17)
+            .anchorVertical(bottom: bottomAnchor, bottomConstant: 25)
+        headerStackView
+            .anchorCenterY(to: containerView)
+            .anchorHorizontal(left: containerView.leftAnchor, leftConstant: 17)
+        containerView
+            .anchorHorizontal(left: leftAnchor, right: rightAnchor)
+            .anchorVertical(top: topAnchor, bottom: yourTransactionsLabel.topAnchor, bottomConstant: 40)
+        eyeButton
+            .anchorSize(widthConstant: 20, heightConstant: 15)
+    }
+
+    func setupAdditionalConfiguration() {
+        backgroundColor = ColorPalette.white
+    }
+
+    func setupStackView() {
+        localizedStackView.addArrangedSubview(balanceLocalizedLabel)
+        localizedStackView.addArrangedSubview(eyeButton)
+        headerStackView.addArrangedSubview(localizedStackView)
+        headerStackView.addArrangedSubview(balanceLabel)
+    }
+}

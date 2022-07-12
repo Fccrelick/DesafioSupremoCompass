@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  DesafioSupremo
+
+  Created by Fernando Crelick on 12/07/22.
+  
+*/
+
+// MARK: - StatementController
+"statementTitle" = "Extrato";
+
+// MARK: - StatementHeaderView
+"balanceLocalizedLabel" = "Seu Saldo";
+"yourTransactionsLabel" = "Suas Movimentaçōes";
+
+// MARK: - StatementTableViewCell
+"pixLabel" = "Pix";
