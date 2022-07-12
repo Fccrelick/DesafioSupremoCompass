@@ -8,7 +8,7 @@
 import UIKit
 
 enum Event{
-    case addButtonTapped
+    case statementCellTapped(item: Item)
 
 }
 

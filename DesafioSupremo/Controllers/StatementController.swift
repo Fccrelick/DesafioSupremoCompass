@@ -39,14 +39,6 @@ class StatementController: UITableViewController, Coordinating {
         refreshDisplay()
     }
 
-    //MARK: - API
-
-    // MARK: - Selectors
-    @objc
-    func handleAddTapped() {
-        coordinator?.eventOccurred(with: .addButtonTapped)
-    }
-
     // MARK: - Helpers
     private func refreshDisplay() {
         guard let balanceViewModel = balanceViewModel else {
@@ -104,6 +96,13 @@ extension StatementController {
 // MARK: - UITableViewDelegate
 
 extension StatementController {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let statementViewModel = statementViewModel else { return }
+        guard let items = statementViewModel.MyStatements else { return }
+        tableView.deselectRow(at: indexPath, animated: true)
+        coordinator?.eventOccurred(with: .statementCellTapped(item: items[indexPath.row]))
+    }
+
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = StatementHeaderView()
         if let balance = balanceViewModel, let amount = balance.amount {
@@ -117,7 +116,7 @@ extension StatementController {
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let value = Int(view.frame.height * 0.6) / 5
+        let value = Int(view.frame.height * 0.65) / 5
         return CGFloat(value)
     }
 }

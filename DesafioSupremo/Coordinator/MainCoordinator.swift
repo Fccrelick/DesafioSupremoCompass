@@ -17,16 +17,21 @@ class MainCoordinator: Coordinator {
 
     func eventOccurred(with type: Event) {
         switch type {
-        case .addButtonTapped:
-            print("rosa")
+        case .statementCellTapped(let item):
+            var vc: UIViewController & Coordinating = DetailViewController()
+
+            vc.coordinator = self
+
+            navigationController?.pushViewController(vc, animated: true)
         }
     }
 
     func start() {
-        var vc: UITableViewController & Coordinating = StatementController(balanceViewModel: balanceViewModel, statementViewModel: statementViewModel)
+        var vc: UITableViewController & Coordinating = StatementController(balanceViewModel: balanceViewModel,
+                                                                           statementViewModel: statementViewModel)
 
         vc.coordinator = self
 
-        navigationController?.setViewControllers([vc], animated: false)
+        navigationController?.setViewControllers([vc], animated: true)
     }
 }
