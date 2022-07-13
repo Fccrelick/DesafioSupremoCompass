@@ -12,9 +12,11 @@ private let reuseIdentifier = "StatementTableViewCell"
 class StatementController: UITableViewController, Coordinating {
     // MARK: - Properties
     var coordinator: Coordinator?
+
     var balanceViewModel: MyBalanceViewModel? {
         didSet{ refreshDisplay() }
     }
+
     var statementViewModel: MyStatementViewModel? {
         didSet { refreshDisplay() }
     }
@@ -48,6 +50,7 @@ class StatementController: UITableViewController, Coordinating {
         guard let statementViewModel = statementViewModel else {
             return
         }
+
         balanceViewModel.onFetchBalanceSucceed = {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -67,7 +70,6 @@ class StatementController: UITableViewController, Coordinating {
         tableView.register(StatementTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
         tableView.backgroundColor = ColorPalette.white
         tableView.separatorStyle = .none
- 
     }
 }
 

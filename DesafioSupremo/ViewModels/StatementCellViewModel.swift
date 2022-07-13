@@ -33,6 +33,7 @@ struct StatementCellViewModel {
         guard let itemType = item.itemType else {
             return false
         }
+
         switch itemType {
         case .transferOut:
             return false
