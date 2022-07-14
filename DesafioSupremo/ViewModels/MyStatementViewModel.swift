@@ -12,7 +12,7 @@ protocol StatementViewModel {
     var MyStatements: [Item]? { set get }
     var onFetchStatementSucceed: (() -> Void)? { set get }
     var onFetchStatementFailure: ((Error) -> Void)? { set get }
-    func fetchMyStatement()
+    func fetchMyStatement(pagination: Bool, withIndex index: Int)
 }
 
 final class MyStatementViewModel: StatementViewModel {
@@ -24,20 +24,37 @@ final class MyStatementViewModel: StatementViewModel {
 
     var onFetchStatementFailure: ((Error) -> Void)?
 
+    var isPaginating = false
+
     init(networkService: NetworkService){
         self.networkService = networkService
-        fetchMyStatement()
+        fetchMyStatement(withIndex: 0)
     }
 
-    func fetchMyStatement() {
-        let request = MyStatementRequest()
+    func fetchMyStatement(pagination: Bool = false, withIndex index: Int) {
+        let request = MyStatementRequest(index: index)
+
+        if pagination{
+            isPaginating = true
+        }
+
         networkService.request(request) { [weak self] result in
             switch result {
             case .success(let statements):
-                self?.MyStatements = statements.items
+                if let MyStatements = self?.MyStatements {
+                    self?.MyStatements?.append(contentsOf: statements.items)
+                } else {
+                    self?.MyStatements = statements.items
+                }
                 self?.onFetchStatementSucceed?()
+                if pagination {
+                    self?.isPaginating = false
+                }
             case .failure(let error):
                 self?.onFetchStatementFailure?(error)
+                if pagination {
+                    self?.isPaginating = false
+                }
             }
         }
     }

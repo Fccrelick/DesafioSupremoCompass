@@ -12,18 +12,18 @@ struct MyBalanceRequest: DataRequest {
 
     private let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
 
-    var url: String{
+    var url: String = {
         let baseURL: String = "https://bank-statement-bff.herokuapp.com"
-        let path: String = "/myBalance"
+        let path: String = "/myBalance/"
         return baseURL + path
-    }
+    }()
 
     var method: HTTPMethod{
         .get
     }
 
     var headers: [String : String] {
-        [
+        [   
             "token" : token
         ]
     }

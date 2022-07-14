@@ -21,6 +21,8 @@ class StatementController: UITableViewController, Coordinating {
         didSet { refreshDisplay() }
     }
 
+    var paginationIndex = 1
+
     // MARK: - Initializers
     init(balanceViewModel: MyBalanceViewModel, statementViewModel: MyStatementViewModel){
         self.balanceViewModel = balanceViewModel
@@ -59,6 +61,7 @@ class StatementController: UITableViewController, Coordinating {
 
         statementViewModel.onFetchStatementSucceed = {
             DispatchQueue.main.async {
+                self.tableView.tableFooterView = nil
                 self.tableView.reloadData()
             }
         }
@@ -120,5 +123,37 @@ extension StatementController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let value = Int(view.frame.height * 0.65) / 5
         return CGFloat(value)
+    }
+
+    private func createSpinnerFooter() -> UIView {
+        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 100))
+
+        let spinner = UIActivityIndicatorView()
+        spinner.center = footerView.center
+        footerView.addSubview(spinner)
+        spinner.startAnimating()
+
+        return footerView
+    }
+}
+
+// MARK: - ScrollViewDelegate
+
+extension StatementController {
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let position = scrollView.contentOffset.y
+        if position > (tableView.contentSize.height-100-scrollView.frame.size.height) {
+            guard let statementViewModel = statementViewModel else {
+                return
+            }
+
+            guard !statementViewModel.isPaginating else {
+                return
+            }
+            self.tableView.tableFooterView = createSpinnerFooter()
+
+            statementViewModel.fetchMyStatement(pagination: true, withIndex: paginationIndex)
+            paginationIndex += 1
+        }
     }
 }

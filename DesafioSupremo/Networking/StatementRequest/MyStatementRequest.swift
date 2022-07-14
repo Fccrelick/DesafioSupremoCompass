@@ -12,11 +12,11 @@ struct MyStatementRequest: DataRequest {
 
     private let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
 
-    var url: String {
+    var url: String = {
         let baseURL: String = "https://bank-statement-bff.herokuapp.com"
-        let path: String = "/myStatement/10/0"
+        let path: String = "/myStatement/10/"
         return baseURL + path
-    }
+    }()
 
     var method: HTTPMethod {
         .get
@@ -26,6 +26,13 @@ struct MyStatementRequest: DataRequest {
         [
             "token" : token
         ]
+    }
+
+    private var index = 0
+
+    init(index: Int) {
+        self.index = index
+        self.url = url + String(index)
     }
 
     func decode(_ data: Data) throws -> MyStatementResponseModel {
