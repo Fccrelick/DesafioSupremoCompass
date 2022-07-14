@@ -127,6 +127,7 @@ class StatementTableViewCell: UITableViewCell {
         guard let item = item else {
             return
         }
+
         let viewModel = StatementCellViewModel(item: item)
         infoLabel.text = viewModel.infoLabelText
         nameToLabel.text = viewModel.nameToLabelText
