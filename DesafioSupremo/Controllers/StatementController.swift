@@ -178,25 +178,3 @@ extension StatementController: UIScrollViewDelegate {
         }
     }
 }
-
-class FooterView: UIView {
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-
-        backgroundColor = ColorPalette.white
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-}
-
-extension FooterView: ViewCoding {
-    func buildViewHierarchy() {
-        
-    }
-
-    func setupConstraints() {
-        
-    }
-}
