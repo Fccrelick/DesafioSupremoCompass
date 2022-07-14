@@ -114,6 +114,9 @@ class StatementTableViewCell: UITableViewCell {
         valueLabel.text = viewModel.amountLabelText
         dateLabel.text = viewModel.dateLabel
         pixView.isHidden = !viewModel.isPix
+        if viewModel.isPix {
+            backgroundColor = ColorPalette.lightGrey
+        }
     }
 }
 
