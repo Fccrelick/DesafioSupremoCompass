@@ -103,11 +103,13 @@ class BalanceView: UIView {
         if eyeButtonSelected {
             headerStackView.removeArrangedSubview(lineView)
             headerStackView.addArrangedSubview(balanceLabel)
+            eyeButton.setImage(UIImage(named: "eyeIcon-show"), for: .normal)
             lineView.isHidden.toggle()
             eyeButtonSelected.toggle()
         } else {
             headerStackView.removeArrangedSubview(balanceLabel)
             headerStackView.addArrangedSubview(lineView)
+            eyeButton.setImage(UIImage(named: "eyeIcon-hide"), for: .normal)
             lineView.isHidden.toggle()
             eyeButtonSelected.toggle()
         }
