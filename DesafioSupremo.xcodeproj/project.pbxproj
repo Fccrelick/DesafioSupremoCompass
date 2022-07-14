@@ -41,6 +41,7 @@
 		5EF8A31D2880971900B641AC /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF8A31C2880971900B641AC /* KeychainHelper.swift */; };
 		5EF8A31F28809A9C00B641AC /* IntExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF8A31E28809A9C00B641AC /* IntExtension.swift */; };
 		5EF8A32128809AB100B641AC /* DataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF8A32028809AB100B641AC /* DataExtension.swift */; };
+		5EF8A3232880B7E500B641AC /* DetailStatementResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF8A3222880B7E500B641AC /* DetailStatementResponseModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,6 +81,7 @@
 		5EF8A31C2880971900B641AC /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
 		5EF8A31E28809A9C00B641AC /* IntExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntExtension.swift; sourceTree = "<group>"; };
 		5EF8A32028809AB100B641AC /* DataExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExtension.swift; sourceTree = "<group>"; };
+		5EF8A3222880B7E500B641AC /* DetailStatementResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailStatementResponseModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +165,7 @@
 			children = (
 				5E8E5924287CDB8D0047F287 /* MyBalanceResponseModel.swift */,
 				5E8E5922287CDADC0047F287 /* MyStatementResponseModel.swift */,
+				5EF8A3222880B7E500B641AC /* DetailStatementResponseModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 				5EF8A31928806C8200B641AC /* LineView.swift in Sources */,
 				5E8E5937287CE8270047F287 /* MyBalanceRequest.swift in Sources */,
 				5E8E592D287CDE870047F287 /* ViewCoding.swift in Sources */,
+				5EF8A3232880B7E500B641AC /* DetailStatementResponseModel.swift in Sources */,
 				5E8E5935287CE5600047F287 /* MyStatementRequest.swift in Sources */,
 				5E8E5930287CE2910047F287 /* DataRequest.swift in Sources */,
 				5EF79F27287E2CDE001FBBE1 /* DetailView.swift in Sources */,
