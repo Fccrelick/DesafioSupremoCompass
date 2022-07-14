@@ -61,8 +61,15 @@ class StatementTableViewCell: UITableViewCell {
 
         return stackView
     }()
-    
-    private let lineView: UIView = {
+
+    private let containerLineView: UIView = {
+        let view = UIView()
+        view.backgroundColor = ColorPalette.black
+
+        return view
+    }()
+
+    private let footerLineView: UIView = {
         let view = UIView()
         view.backgroundColor = ColorPalette.black
 
@@ -92,6 +99,18 @@ class StatementTableViewCell: UITableViewCell {
         return label
     }()
 
+    private let containerView: UIView = {
+       let view = UIView()
+
+        return view
+    }()
+
+    private let footerView: UIView = {
+        let view = UIView()
+
+        return view
+    }()
+
     //MARK: - Initializers
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -115,7 +134,7 @@ class StatementTableViewCell: UITableViewCell {
         dateLabel.text = viewModel.dateLabel
         pixView.isHidden = !viewModel.isPix
         if viewModel.isPix {
-            backgroundColor = ColorPalette.lightGrey
+            containerView.backgroundColor = ColorPalette.lightGrey
         }
     }
 }
@@ -123,27 +142,41 @@ class StatementTableViewCell: UITableViewCell {
 extension StatementTableViewCell: ViewCoding {
     func buildViewHierarchy() {
         SetupStackViews()
-        addSubview(lineView)
-        lineView.addSubview(dotView)
-        addSubview(cellStackView)
-        addSubview(pixView)
+        addSubview(containerView)
+        addSubview(footerView)
+        containerView.addSubview(containerLineView)
+        footerView.addSubview(footerLineView)
+        containerLineView.addSubview(dotView)
+        containerView.addSubview(cellStackView)
+        containerView.addSubview(pixView)
         pixView.addSubview(pixLabel)
     }
 
     func setupConstraints() {
-        lineView
+        footerView
+            .anchorHorizontal(left: leftAnchor, right: rightAnchor)
+            .anchorVertical(bottom: bottomAnchor)
+            .anchorSize(heightConstant: 10)
+
+        containerView
+            .anchorHorizontal(left: leftAnchor, right: rightAnchor)
+            .anchorVertical(top: topAnchor, bottom: footerView.topAnchor)
+
+        containerLineView
             .anchorHorizontal(left: leftAnchor, leftConstant: 20)
             .anchorVertical(top: topAnchor, bottom: bottomAnchor)
             .anchorSize(widthConstant: 1)
 
         dotView
-            .anchorCenterY(to: lineView)
-            .anchorCenterX(to: lineView)
+            .anchorCenterY(to: containerLineView)
+            .anchorCenterX(to: containerLineView)
             .anchorSize(widthConstant: 10, heightConstant: 10)
 
         cellStackView
-            .anchorHorizontal(left: lineView.rightAnchor, right: rightAnchor, leftConstant: 20, rightConstant: 15)
-            .anchorVertical(top: topAnchor, bottom: bottomAnchor, topConstant: 10, bottomConstant: 10)
+            .anchorHorizontal(left: containerLineView.rightAnchor, right: containerView.rightAnchor,
+                              leftConstant: 20, rightConstant: 15)
+            .anchorVertical(top: containerView.topAnchor, bottom: containerView.bottomAnchor,
+                            topConstant: 10, bottomConstant: 10)
 
         pixView
             .anchorCenterX(to: dateLabel)
