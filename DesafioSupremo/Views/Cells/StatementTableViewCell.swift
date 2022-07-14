@@ -140,6 +140,8 @@ class StatementTableViewCell: UITableViewCell {
     }
 }
 
+// MARK: - ViewCoding
+
 extension StatementTableViewCell: ViewCoding {
     func buildViewHierarchy() {
         SetupStackViews()

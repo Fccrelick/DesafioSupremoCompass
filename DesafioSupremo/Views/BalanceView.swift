@@ -108,9 +108,9 @@ class BalanceView: UIView {
             eyeButtonSelected.toggle()
         }
     }
-
-    // MARK: - Helpers
 }
+
+// MARK: - View Coding
 
 extension BalanceView: ViewCoding {
     func buildViewHierarchy() {
