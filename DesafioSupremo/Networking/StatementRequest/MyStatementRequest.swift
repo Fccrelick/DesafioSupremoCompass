@@ -32,7 +32,7 @@ struct MyStatementRequest: DataRequest {
         self.url = url + String(index)
     }
 
-    func decode(_ data: Data) throws -> MyStatementResponseModel {
+    func decode(_ data: Data) throws -> Response {
         let decoder = JSONDecoder()
         let response = try decoder.decode(MyStatementResponseModel.self, from: data)
         return response
