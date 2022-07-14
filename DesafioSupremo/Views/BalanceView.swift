@@ -18,6 +18,8 @@ class BalanceView: UIView {
         set{ balanceLabel.text = newValue}
     }
 
+    var eyeButtonSelected = false
+
     weak var delegate: BalanceViewDelegate?
 
     private let balanceLocalizedLabel: UILabel = {
@@ -76,9 +78,9 @@ class BalanceView: UIView {
         return view
     }()
 
-    private let lineView: UIView = {
-        let view = UIView()
-        view.backgroundColor = ColorPalette.cyan
+    private lazy var lineView: LineView = {
+        let view = LineView()
+        view.backgroundColor = ColorPalette.lightGrey
         view.isHidden = true
 
         return view
@@ -98,9 +100,18 @@ class BalanceView: UIView {
     // MARK: - Selectors
     @objc
     func handleEyeButtonTapped() {
-        print("touch")
-        balanceLabel.isHidden = true
-        lineView.isHidden = false
+        if eyeButtonSelected {
+            headerStackView.removeArrangedSubview(lineView)
+            headerStackView.addArrangedSubview(balanceLabel)
+            lineView.isHidden.toggle()
+            eyeButtonSelected.toggle()
+        } else {
+            headerStackView.removeArrangedSubview(balanceLabel)
+            headerStackView.addArrangedSubview(lineView)
+            lineView.isHidden.toggle()
+            eyeButtonSelected.toggle()
+        }
+
         delegate?.eyeButtonTapped()
     }
 
@@ -123,8 +134,7 @@ extension BalanceView: ViewCoding {
 
         lineView
             .anchorHorizontal(left: balanceLabel.leftAnchor, right: balanceLabel.rightAnchor)
-            .anchorCenterY(to: balanceLabel)
-            .anchorSize(heightConstant: 2)
+            .anchorVertical(top: balanceLabel.topAnchor, bottom: balanceLabel.bottomAnchor)
 
         headerStackView
             .anchorCenterY(to: containerView)
