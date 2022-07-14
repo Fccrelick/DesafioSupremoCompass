@@ -12,13 +12,14 @@ class MainCoordinator: Coordinator {
 
     var children: [Coordinator]? = nil
 
-    var balanceViewModel = MyBalanceViewModel(networkService: DefaultNetworkService())
-    var statementViewModel = MyStatementViewModel(networkService: DefaultNetworkService())
+    let balanceViewModel = MyBalanceViewModel(networkService: DefaultNetworkService())
+    let statementViewModel = MyStatementViewModel(networkService: DefaultNetworkService())
 
     func eventOccurred(with type: Event) {
         switch type {
         case .statementCellTapped(let item):
-            var vc: UIViewController & Coordinating = DetailViewController()
+            let detailViewModel = MyDetailStatementViewModel(networkService: DefaultNetworkService(), item: item)
+            var vc: UIViewController & Coordinating = DetailViewController(detailStatementViewModel: detailViewModel)
 
             vc.coordinator = self
 

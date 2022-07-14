@@ -15,11 +15,11 @@ class StatementController: UIViewController, Coordinating {
 
     var coordinator: Coordinator?
 
-    var balanceViewModel: MyBalanceViewModel? {
+    var balanceViewModel: MyBalanceViewModel {
         didSet{ refreshDisplay() }
     }
 
-    var statementViewModel: MyStatementViewModel? {
+    var statementViewModel: MyStatementViewModel {
         didSet { refreshDisplay() }
     }
 
@@ -28,7 +28,7 @@ class StatementController: UIViewController, Coordinating {
     var viewAppeared = false
 
     // MARK: - Initializers
-     init(balanceViewModel: MyBalanceViewModel, statementViewModel: MyStatementViewModel){
+     init(balanceViewModel: MyBalanceViewModel, statementViewModel: MyStatementViewModel) {
         self.balanceViewModel = balanceViewModel
         self.statementViewModel = statementViewModel
          super.init(nibName: nil, bundle: nil)
@@ -69,13 +69,13 @@ class StatementController: UIViewController, Coordinating {
 
     // MARK: - Helpers
     private func refreshDisplay() {
-        guard let balanceViewModel = balanceViewModel else {
-            return
-        }
-
-        guard let statementViewModel = statementViewModel else {
-            return
-        }
+//        guard let balanceViewModel = balanceViewModel else {
+//            return
+//        }
+//
+//        guard let statementViewModel = statementViewModel else {
+//            return
+//        }
 
         balanceViewModel.onFetchBalanceSucceed = {
             DispatchQueue.main.async {
@@ -109,17 +109,19 @@ class StatementController: UIViewController, Coordinating {
 
 extension StatementController: UITableViewDataSource {
      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let statementViewModel = statementViewModel else { return 0 }
+//        guard let statementViewModel = statementViewModel else { return 0 }
         guard let items = statementViewModel.MyStatements else { return 0 }
         return items.count
     }
 
      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as?
-                StatementTableViewCell,
-              let statementViewModel = statementViewModel else {
+                StatementTableViewCell else {
             return UITableViewCell()
         }
+//              let statementViewModel = statementViewModel else {
+//            return UITableViewCell()
+//        }
 
         cell.item = statementViewModel.MyStatements?[indexPath.row]
 
@@ -131,7 +133,7 @@ extension StatementController: UITableViewDataSource {
 
 extension StatementController: UITableViewDelegate {
      func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let statementViewModel = statementViewModel else { return }
+//        guard let statementViewModel = statementViewModel else { return }
         guard let items = statementViewModel.MyStatements else { return }
         tableView.deselectRow(at: indexPath, animated: true)
         coordinator?.eventOccurred(with: .statementCellTapped(item: items[indexPath.row]))
@@ -160,9 +162,9 @@ extension StatementController: UIScrollViewDelegate {
      func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let position = scrollView.contentOffset.y
          if position > (self.statementView.tableView.contentSize.height-50-scrollView.frame.size.height) {
-            guard let statementViewModel = statementViewModel else {
-                return
-            }
+//            guard let statementViewModel = statementViewModel else {
+//                return
+//            }
 
             guard !statementViewModel.isPaginating else {
                 return
