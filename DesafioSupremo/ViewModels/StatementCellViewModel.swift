@@ -15,6 +15,10 @@ struct StatementCellViewModel {
     }
 
     var nameToLabelText: String? {
+        guard item.to != nil else {
+            return "Sua Conta"
+        }
+
         return item.to
     }
 
