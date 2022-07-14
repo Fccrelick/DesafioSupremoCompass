@@ -9,8 +9,10 @@ import UIKit
 
 private let reuseIdentifier = "StatementTableViewCell"
 
-class StatementController: UITableViewController, Coordinating {
+class StatementController: UIViewController, Coordinating {
     // MARK: - Properties
+    let statementView = StatementView()
+
     var coordinator: Coordinator?
 
     var balanceViewModel: MyBalanceViewModel? {
@@ -26,10 +28,10 @@ class StatementController: UITableViewController, Coordinating {
     var viewAppeared = false
 
     // MARK: - Initializers
-    init(balanceViewModel: MyBalanceViewModel, statementViewModel: MyStatementViewModel){
+     init(balanceViewModel: MyBalanceViewModel, statementViewModel: MyStatementViewModel){
         self.balanceViewModel = balanceViewModel
         self.statementViewModel = statementViewModel
-        super.init(style: .plain)
+         super.init(nibName: nil, bundle: nil)
 
     }
 
@@ -38,11 +40,25 @@ class StatementController: UITableViewController, Coordinating {
     }
 
     // MARK: - Lifecycle
+    override func loadView() {
+        view = statementView
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        statementView.tableView.delegate = self
+        statementView.tableView.dataSource = self
         setupTableView()
         refreshDisplay()
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
+        if let rect = self.navigationController?.navigationBar {
+            statementView.adjustBalanceViewToNavBar(anchor: rect.bottomAnchor)
+        }
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -63,14 +79,17 @@ class StatementController: UITableViewController, Coordinating {
 
         balanceViewModel.onFetchBalanceSucceed = {
             DispatchQueue.main.async {
-                self.tableView.reloadData()
+                if let balance = balanceViewModel.amount {
+                    self.statementView.balance = "R$ \(balance),00"
+                }
+                self.statementView.tableView.reloadData()
             }
         }
 
         statementViewModel.onFetchStatementSucceed = {
             DispatchQueue.main.async {
-                self.tableView.tableFooterView = nil
-                self.tableView.reloadData()
+                self.statementView.tableView.tableFooterView = nil
+                self.statementView.tableView.reloadData()
             }
         }
     }
@@ -78,22 +97,22 @@ class StatementController: UITableViewController, Coordinating {
     private func setupTableView() {
         view.backgroundColor = ColorPalette.white
         title = LocaleKeys.statementTitle.localized
-        tableView.register(StatementTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
-        tableView.backgroundColor = ColorPalette.white
-        tableView.separatorStyle = .none
+        statementView.tableView.register(StatementTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
+        statementView.tableView.backgroundColor = ColorPalette.white
+        statementView.tableView.separatorStyle = .none
     }
 }
 
 // MARK: - UITableViewDataSource
 
-extension StatementController {
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+extension StatementController: UITableViewDataSource {
+     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let statementViewModel = statementViewModel else { return 0 }
         guard let items = statementViewModel.MyStatements else { return 0 }
         return items.count
     }
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as?
                 StatementTableViewCell,
               let statementViewModel = statementViewModel else {
@@ -108,27 +127,15 @@ extension StatementController {
 
 // MARK: - UITableViewDelegate
 
-extension StatementController {
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+extension StatementController: UITableViewDelegate {
+     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let statementViewModel = statementViewModel else { return }
         guard let items = statementViewModel.MyStatements else { return }
         tableView.deselectRow(at: indexPath, animated: true)
         coordinator?.eventOccurred(with: .statementCellTapped(item: items[indexPath.row]))
     }
 
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = StatementHeaderView()
-        if let balance = balanceViewModel, let amount = balance.amount {
-            view.balance = "R$ \(amount),00"
-        }
-        return view
-    }
-
-    override func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
-        300
-    }
-
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let value = Int(view.frame.height * 0.65) / 5
         return CGFloat(value)
     }
@@ -147,10 +154,10 @@ extension StatementController {
 
 // MARK: - ScrollViewDelegate
 
-extension StatementController {
-    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+extension StatementController: UIScrollViewDelegate {
+     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let position = scrollView.contentOffset.y
-        if position > (tableView.contentSize.height-50-scrollView.frame.size.height) {
+         if position > (self.statementView.tableView.contentSize.height-50-scrollView.frame.size.height) {
             guard let statementViewModel = statementViewModel else {
                 return
             }
@@ -161,7 +168,7 @@ extension StatementController {
 
             if viewAppeared{
 
-            self.tableView.tableFooterView = createSpinnerFooter()
+                self.statementView.tableView.tableFooterView = createSpinnerFooter()
 
             statementViewModel.fetchMyStatement(pagination: true, withIndex: paginationIndex)
                 paginationIndex += 1

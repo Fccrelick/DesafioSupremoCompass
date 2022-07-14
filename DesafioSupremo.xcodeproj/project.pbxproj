@@ -15,7 +15,7 @@
 		5E8E5916287CD6840047F287 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8E5915287CD6840047F287 /* Coordinator.swift */; };
 		5E8E5918287CD6B20047F287 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8E5917287CD6B20047F287 /* MainCoordinator.swift */; };
 		5E8E591B287CD8420047F287 /* StatementController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8E591A287CD8420047F287 /* StatementController.swift */; };
-		5E8E591D287CD8580047F287 /* StatementHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8E591C287CD8580047F287 /* StatementHeaderView.swift */; };
+		5E8E591D287CD8580047F287 /* BalanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8E591C287CD8580047F287 /* BalanceView.swift */; };
 		5E8E5923287CDADC0047F287 /* MyStatementResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8E5922287CDADC0047F287 /* MyStatementResponseModel.swift */; };
 		5E8E5925287CDB8D0047F287 /* MyBalanceResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8E5924287CDB8D0047F287 /* MyBalanceResponseModel.swift */; };
 		5E8E5928287CDCBE0047F287 /* StatementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8E5927287CDCBE0047F287 /* StatementTableViewCell.swift */; };
@@ -36,6 +36,8 @@
 		5EF79F23287DFE51001FBBE1 /* LocaleKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF79F22287DFE51001FBBE1 /* LocaleKeys.swift */; };
 		5EF79F25287E2C5A001FBBE1 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF79F24287E2C5A001FBBE1 /* DetailViewController.swift */; };
 		5EF79F27287E2CDE001FBBE1 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF79F26287E2CDE001FBBE1 /* DetailView.swift */; };
+		5EF8A31928806C8200B641AC /* LineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF8A31828806C8200B641AC /* LineView.swift */; };
+		5EF8A31B2880716F00B641AC /* StatementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF8A31A2880716F00B641AC /* StatementView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,7 +51,7 @@
 		5E8E5915287CD6840047F287 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		5E8E5917287CD6B20047F287 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		5E8E591A287CD8420047F287 /* StatementController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementController.swift; sourceTree = "<group>"; };
-		5E8E591C287CD8580047F287 /* StatementHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementHeaderView.swift; sourceTree = "<group>"; };
+		5E8E591C287CD8580047F287 /* BalanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceView.swift; sourceTree = "<group>"; };
 		5E8E5922287CDADC0047F287 /* MyStatementResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyStatementResponseModel.swift; sourceTree = "<group>"; };
 		5E8E5924287CDB8D0047F287 /* MyBalanceResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBalanceResponseModel.swift; sourceTree = "<group>"; };
 		5E8E5927287CDCBE0047F287 /* StatementTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementTableViewCell.swift; sourceTree = "<group>"; };
@@ -70,6 +72,8 @@
 		5EF79F22287DFE51001FBBE1 /* LocaleKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaleKeys.swift; sourceTree = "<group>"; };
 		5EF79F24287E2C5A001FBBE1 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		5EF79F26287E2CDE001FBBE1 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		5EF8A31828806C8200B641AC /* LineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineView.swift; sourceTree = "<group>"; };
+		5EF8A31A2880716F00B641AC /* StatementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,8 +145,9 @@
 			isa = PBXGroup;
 			children = (
 				5E8E5926287CDCAC0047F287 /* Cells */,
-				5E8E591C287CD8580047F287 /* StatementHeaderView.swift */,
+				5E8E591C287CD8580047F287 /* BalanceView.swift */,
 				5EF79F26287E2CDE001FBBE1 /* DetailView.swift */,
+				5EF8A31A2880716F00B641AC /* StatementView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -174,6 +179,7 @@
 				5E8E592C287CDE870047F287 /* ViewCoding.swift */,
 				5EF79F1B287DE19C001FBBE1 /* AppTheme.swift */,
 				5EF79F1D287DF040001FBBE1 /* DotView.swift */,
+				5EF8A31828806C8200B641AC /* LineView.swift */,
 			);
 			path = Commons;
 			sourceTree = "<group>";
@@ -292,6 +298,7 @@
 				5EF79F16287DD001001FBBE1 /* StatementCellViewModel.swift in Sources */,
 				5E8E5916287CD6840047F287 /* Coordinator.swift in Sources */,
 				5E8E591B287CD8420047F287 /* StatementController.swift in Sources */,
+				5EF8A31928806C8200B641AC /* LineView.swift in Sources */,
 				5E8E5937287CE8270047F287 /* MyBalanceRequest.swift in Sources */,
 				5E8E592D287CDE870047F287 /* ViewCoding.swift in Sources */,
 				5E8E5935287CE5600047F287 /* MyStatementRequest.swift in Sources */,
@@ -302,7 +309,8 @@
 				5E8E5928287CDCBE0047F287 /* StatementTableViewCell.swift in Sources */,
 				5E8E5901287CD6490047F287 /* AppDelegate.swift in Sources */,
 				5E8E5923287CDADC0047F287 /* MyStatementResponseModel.swift in Sources */,
-				5E8E591D287CD8580047F287 /* StatementHeaderView.swift in Sources */,
+				5E8E591D287CD8580047F287 /* BalanceView.swift in Sources */,
+				5EF8A31B2880716F00B641AC /* StatementView.swift in Sources */,
 				5E8E593A287CEBC70047F287 /* MyBalanceViewModel.swift in Sources */,
 				5EF79F25287E2C5A001FBBE1 /* DetailViewController.swift in Sources */,
 				5E8E593C287CFC290047F287 /* MyStatementViewModel.swift in Sources */,

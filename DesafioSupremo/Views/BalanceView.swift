@@ -7,12 +7,18 @@
 
 import UIKit
 
-class StatementHeaderView: UIView {
+protocol BalanceViewDelegate: AnyObject {
+    func eyeButtonTapped()
+}
+
+class BalanceView: UIView {
     //MARK: Properties
     var balance: String? {
         get{ return balanceLabel.text }
         set{ balanceLabel.text = newValue}
     }
+
+    weak var delegate: BalanceViewDelegate?
 
     private let balanceLocalizedLabel: UILabel = {
         let label = UILabel()
@@ -33,7 +39,7 @@ class StatementHeaderView: UIView {
     private let localizedStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
-        stackView.spacing = 5
+        stackView.spacing = 7
 
         return stackView
     }()
@@ -62,7 +68,7 @@ class StatementHeaderView: UIView {
 
         return label
     }()
-    
+
     private let containerView: UIView = {
         let view = UIView()
         view.backgroundColor = ColorPalette.lightGrey
@@ -70,6 +76,15 @@ class StatementHeaderView: UIView {
         return view
     }()
 
+    private let lineView: UIView = {
+        let view = UIView()
+        view.backgroundColor = ColorPalette.cyan
+        view.isHidden = true
+
+        return view
+    }()
+
+    // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: frame)
 
@@ -79,13 +94,25 @@ class StatementHeaderView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    // MARK: - Selectors
+    @objc
+    func handleEyeButtonTapped() {
+        print("touch")
+        balanceLabel.isHidden = true
+        lineView.isHidden = false
+        delegate?.eyeButtonTapped()
+    }
+
+    // MARK: - Helpers
 }
 
-extension StatementHeaderView: ViewCoding {
+extension BalanceView: ViewCoding {
     func buildViewHierarchy() {
         setupStackView()
         addSubview(containerView)
         addSubview(yourTransactionsLabel)
+        addSubview(lineView)
         containerView.addSubview(headerStackView)
     }
 
@@ -93,18 +120,27 @@ extension StatementHeaderView: ViewCoding {
         yourTransactionsLabel
             .anchorHorizontal(left: leftAnchor, leftConstant: 17)
             .anchorVertical(bottom: bottomAnchor, bottomConstant: 25)
+
+        lineView
+            .anchorHorizontal(left: balanceLabel.leftAnchor, right: balanceLabel.rightAnchor)
+            .anchorCenterY(to: balanceLabel)
+            .anchorSize(heightConstant: 2)
+
         headerStackView
             .anchorCenterY(to: containerView)
             .anchorHorizontal(left: containerView.leftAnchor, leftConstant: 17)
+
         containerView
             .anchorHorizontal(left: leftAnchor, right: rightAnchor)
-            .anchorVertical(top: topAnchor, bottom: yourTransactionsLabel.topAnchor, bottomConstant: 40)
+            .anchorVertical(top: topAnchor, bottom: yourTransactionsLabel.topAnchor, bottomConstant: 20)
+
         eyeButton
             .anchorSize(widthConstant: 20, heightConstant: 15)
     }
 
     func setupAdditionalConfiguration() {
         backgroundColor = ColorPalette.white
+        eyeButton.addTarget(self, action: #selector(handleEyeButtonTapped), for: .touchUpInside)
     }
 
     func setupStackView() {

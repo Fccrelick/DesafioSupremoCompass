@@ -27,7 +27,7 @@ class MainCoordinator: Coordinator {
     }
 
     func start() {
-        var vc: UITableViewController & Coordinating = StatementController(balanceViewModel: balanceViewModel,
+        var vc: UIViewController & Coordinating = StatementController(balanceViewModel: balanceViewModel,
                                                                            statementViewModel: statementViewModel)
 
         vc.coordinator = self
