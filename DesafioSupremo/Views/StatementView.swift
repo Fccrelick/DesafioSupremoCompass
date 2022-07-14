@@ -7,18 +7,12 @@
 
 import UIKit
 
-protocol StatementViewDelegate: AnyObject {
-    func viewDidLoad(balanceView: UIView)
-}
-
 class StatementView: UIView {
     // MARK: - Properties
      var balance: String? {
          get{ return balanceView.balance }
          set{ balanceView.balance = newValue }
     }
-
-    weak var delegate: StatementViewDelegate?
 
     private let balanceView: BalanceView = {
         let view = BalanceView()
@@ -37,7 +31,6 @@ class StatementView: UIView {
     super.init(frame: frame)
 
         setupView()
-        delegate?.viewDidLoad(balanceView: balanceView)
     }
 
     required init?(coder: NSCoder) {

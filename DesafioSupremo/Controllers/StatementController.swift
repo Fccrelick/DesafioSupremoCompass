@@ -79,9 +79,11 @@ class StatementController: UIViewController, Coordinating {
 
         balanceViewModel.onFetchBalanceSucceed = {
             DispatchQueue.main.async {
-                if let balance = balanceViewModel.amount {
+                let query = KeychainHelper.standard.read(service: "balance")
+                if let balance = query?.toInt() {
                     self.statementView.balance = "R$ \(balance),00"
                 }
+
                 self.statementView.tableView.reloadData()
             }
         }

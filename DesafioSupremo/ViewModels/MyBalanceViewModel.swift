@@ -33,7 +33,7 @@ final class MyBalanceViewModel: BalanceViewModel {
         networkService.request(request) { [weak self] result in
             switch result {
             case .success(let amount):
-                self?.amount = amount.amount
+                KeychainHelper.standard.save(amount.amount.toData(), service: "balance")
                 self?.onFetchBalanceSucceed?()
             case .failure(let error):
                 self?.onFetchBalanceFailure?(error)
@@ -41,3 +41,4 @@ final class MyBalanceViewModel: BalanceViewModel {
         }
     }
 }
+

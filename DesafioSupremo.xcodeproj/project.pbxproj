@@ -38,6 +38,9 @@
 		5EF79F27287E2CDE001FBBE1 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF79F26287E2CDE001FBBE1 /* DetailView.swift */; };
 		5EF8A31928806C8200B641AC /* LineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF8A31828806C8200B641AC /* LineView.swift */; };
 		5EF8A31B2880716F00B641AC /* StatementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF8A31A2880716F00B641AC /* StatementView.swift */; };
+		5EF8A31D2880971900B641AC /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF8A31C2880971900B641AC /* KeychainHelper.swift */; };
+		5EF8A31F28809A9C00B641AC /* IntExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF8A31E28809A9C00B641AC /* IntExtension.swift */; };
+		5EF8A32128809AB100B641AC /* DataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF8A32028809AB100B641AC /* DataExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +77,9 @@
 		5EF79F26287E2CDE001FBBE1 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		5EF8A31828806C8200B641AC /* LineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineView.swift; sourceTree = "<group>"; };
 		5EF8A31A2880716F00B641AC /* StatementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementView.swift; sourceTree = "<group>"; };
+		5EF8A31C2880971900B641AC /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
+		5EF8A31E28809A9C00B641AC /* IntExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntExtension.swift; sourceTree = "<group>"; };
+		5EF8A32028809AB100B641AC /* DataExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +186,9 @@
 				5EF79F1B287DE19C001FBBE1 /* AppTheme.swift */,
 				5EF79F1D287DF040001FBBE1 /* DotView.swift */,
 				5EF8A31828806C8200B641AC /* LineView.swift */,
+				5EF8A31C2880971900B641AC /* KeychainHelper.swift */,
+				5EF8A31E28809A9C00B641AC /* IntExtension.swift */,
+				5EF8A32028809AB100B641AC /* DataExtension.swift */,
 			);
 			path = Commons;
 			sourceTree = "<group>";
@@ -305,12 +314,15 @@
 				5E8E5930287CE2910047F287 /* DataRequest.swift in Sources */,
 				5EF79F27287E2CDE001FBBE1 /* DetailView.swift in Sources */,
 				5EF79F1A287DE15E001FBBE1 /* UIColorExtension.swift in Sources */,
+				5EF8A31D2880971900B641AC /* KeychainHelper.swift in Sources */,
 				5E8E592A287CDE200047F287 /* UIViewExtension.swift in Sources */,
 				5E8E5928287CDCBE0047F287 /* StatementTableViewCell.swift in Sources */,
+				5EF8A31F28809A9C00B641AC /* IntExtension.swift in Sources */,
 				5E8E5901287CD6490047F287 /* AppDelegate.swift in Sources */,
 				5E8E5923287CDADC0047F287 /* MyStatementResponseModel.swift in Sources */,
 				5E8E591D287CD8580047F287 /* BalanceView.swift in Sources */,
 				5EF8A31B2880716F00B641AC /* StatementView.swift in Sources */,
+				5EF8A32128809AB100B641AC /* DataExtension.swift in Sources */,
 				5E8E593A287CEBC70047F287 /* MyBalanceViewModel.swift in Sources */,
 				5EF79F25287E2C5A001FBBE1 /* DetailViewController.swift in Sources */,
 				5E8E593C287CFC290047F287 /* MyStatementViewModel.swift in Sources */,

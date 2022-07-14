@@ -7,10 +7,6 @@
 
 import UIKit
 
-protocol BalanceViewDelegate: AnyObject {
-    func eyeButtonTapped()
-}
-
 class BalanceView: UIView {
     //MARK: Properties
     var balance: String? {
@@ -19,8 +15,6 @@ class BalanceView: UIView {
     }
 
     var eyeButtonSelected = false
-
-    weak var delegate: BalanceViewDelegate?
 
     private let balanceLocalizedLabel: UILabel = {
         let label = UILabel()
@@ -113,8 +107,6 @@ class BalanceView: UIView {
             lineView.isHidden.toggle()
             eyeButtonSelected.toggle()
         }
-
-        delegate?.eyeButtonTapped()
     }
 
     // MARK: - Helpers
