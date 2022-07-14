@@ -28,10 +28,7 @@ struct MyStatementRequest: DataRequest {
         ]
     }
 
-    private var index = 0
-
     init(index: Int) {
-        self.index = index
         self.url = url + String(index)
     }
 

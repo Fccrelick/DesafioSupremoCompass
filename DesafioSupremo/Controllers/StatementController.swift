@@ -47,6 +47,7 @@ class StatementController: UITableViewController, Coordinating {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+
         viewAppeared = true
     }
 
@@ -157,6 +158,7 @@ extension StatementController {
             guard !statementViewModel.isPaginating else {
                 return
             }
+
             if viewAppeared{
 
             self.tableView.tableFooterView = createSpinnerFooter()
