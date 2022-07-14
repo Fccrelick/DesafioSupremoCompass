@@ -41,8 +41,9 @@ final class MyStatementViewModel: StatementViewModel {
         networkService.request(request) { [weak self] result in
             switch result {
             case .success(let statements):
-                if let MyStatements = self?.MyStatements {
+                if (self?.MyStatements) != nil {
                     self?.MyStatements?.append(contentsOf: statements.items)
+                    print("added new items")
                 } else {
                     self?.MyStatements = statements.items
                 }

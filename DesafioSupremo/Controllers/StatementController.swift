@@ -23,6 +23,8 @@ class StatementController: UITableViewController, Coordinating {
 
     var paginationIndex = 1
 
+    var viewAppeared = false
+
     // MARK: - Initializers
     init(balanceViewModel: MyBalanceViewModel, statementViewModel: MyStatementViewModel){
         self.balanceViewModel = balanceViewModel
@@ -41,6 +43,11 @@ class StatementController: UITableViewController, Coordinating {
 
         setupTableView()
         refreshDisplay()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        viewAppeared = true
     }
 
     // MARK: - Helpers
@@ -142,7 +149,7 @@ extension StatementController {
 extension StatementController {
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let position = scrollView.contentOffset.y
-        if position > (tableView.contentSize.height-100-scrollView.frame.size.height) {
+        if position > (tableView.contentSize.height-50-scrollView.frame.size.height) {
             guard let statementViewModel = statementViewModel else {
                 return
             }
@@ -150,10 +157,13 @@ extension StatementController {
             guard !statementViewModel.isPaginating else {
                 return
             }
+            if viewAppeared{
+
             self.tableView.tableFooterView = createSpinnerFooter()
 
             statementViewModel.fetchMyStatement(pagination: true, withIndex: paginationIndex)
-            paginationIndex += 1
+                paginationIndex += 1
+            }
         }
     }
 }
