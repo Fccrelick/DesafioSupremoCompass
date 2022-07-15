@@ -34,4 +34,11 @@ class DetailViewController: UIViewController, Coordinating {
 
         view.backgroundColor = ColorPalette.white
     }
+
+    // MARK: - Helpers
+    private func refreshDisplay() {
+        detailStatementViewModel.onFetchDetailsSucceed = {
+            
+        }
+    }
 }

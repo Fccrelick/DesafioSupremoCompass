@@ -154,7 +154,7 @@ extension StatementController: UIScrollViewDelegate {
                 return
             }
 
-            if viewAppeared{
+            if viewAppeared {
 
                 self.statementView.tableView.tableFooterView = createSpinnerFooter()
 

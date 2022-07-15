@@ -15,4 +15,5 @@ struct DetailStatementResponseModel: Codable {
     var from: String?
     var id: String?
     var amount: Int?
+    var bankName: String?
 }

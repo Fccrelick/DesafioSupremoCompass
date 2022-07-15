@@ -44,6 +44,7 @@
 		5EF8A3232880B7E500B641AC /* DetailStatementResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF8A3222880B7E500B641AC /* DetailStatementResponseModel.swift */; };
 		5EF8A3252880C55B00B641AC /* DetailStatementRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF8A3242880C55B00B641AC /* DetailStatementRequest.swift */; };
 		5EF8A3272880C75D00B641AC /* DetailStatementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF8A3262880C75D00B641AC /* DetailStatementViewModel.swift */; };
+		5EF8A3292880F56600B641AC /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF8A3282880F56600B641AC /* DetailViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +87,7 @@
 		5EF8A3222880B7E500B641AC /* DetailStatementResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailStatementResponseModel.swift; sourceTree = "<group>"; };
 		5EF8A3242880C55B00B641AC /* DetailStatementRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailStatementRequest.swift; sourceTree = "<group>"; };
 		5EF8A3262880C75D00B641AC /* DetailStatementViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailStatementViewModel.swift; sourceTree = "<group>"; };
+		5EF8A3282880F56600B641AC /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -227,6 +229,7 @@
 				5E8E593B287CFC290047F287 /* MyStatementViewModel.swift */,
 				5EF8A3262880C75D00B641AC /* DetailStatementViewModel.swift */,
 				5EF79F15287DD001001FBBE1 /* StatementCellViewModel.swift */,
+				5EF8A3282880F56600B641AC /* DetailViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -329,6 +332,7 @@
 				5E8E592A287CDE200047F287 /* UIViewExtension.swift in Sources */,
 				5E8E5928287CDCBE0047F287 /* StatementTableViewCell.swift in Sources */,
 				5EF8A31F28809A9C00B641AC /* IntExtension.swift in Sources */,
+				5EF8A3292880F56600B641AC /* DetailViewModel.swift in Sources */,
 				5EF8A3272880C75D00B641AC /* DetailStatementViewModel.swift in Sources */,
 				5E8E5901287CD6490047F287 /* AppDelegate.swift in Sources */,
 				5E8E5923287CDADC0047F287 /* MyStatementResponseModel.swift in Sources */,
