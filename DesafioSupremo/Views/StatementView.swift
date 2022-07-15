@@ -7,7 +7,7 @@
 
 import UIKit
 
-class StatementView: UIView {
+final class StatementView: UIView {
     // MARK: - Properties
      var balance: String? {
          get{ return balanceView.balance }

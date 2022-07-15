@@ -9,7 +9,7 @@ import UIKit
 
 private let reuseIdentifier = "StatementTableViewCell"
 
-class StatementController: UIViewController, Coordinating {
+final class StatementController: UIViewController, Coordinating {
     // MARK: - Properties
     let statementView = StatementView()
 

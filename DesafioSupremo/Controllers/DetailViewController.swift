@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DetailViewController: UIViewController, Coordinating {
+final class DetailViewController: UIViewController, Coordinating {
     //MARK: - Properties
     var coordinator: Coordinator?
 

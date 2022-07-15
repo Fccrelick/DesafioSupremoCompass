@@ -7,6 +7,6 @@
 
 import Foundation
 
-class MyBalanceResponseModel: Codable {
+final class MyBalanceResponseModel: Codable {
     let amount: Int
 }

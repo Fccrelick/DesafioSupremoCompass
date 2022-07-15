@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BalanceView: UIView {
+final class BalanceView: UIView {
     //MARK: Properties
     var balance: String? {
         get{ return balanceLabel.text }

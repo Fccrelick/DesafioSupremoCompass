@@ -7,7 +7,7 @@
 
 import UIKit
 
-class StatementTableViewCell: UITableViewCell {
+final class StatementTableViewCell: UITableViewCell {
     //MARK: - Properties
     var item: Item? {
         didSet { configure() }

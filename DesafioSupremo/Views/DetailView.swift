@@ -11,7 +11,7 @@ protocol DetailViewDelegate: AnyObject {
     func handleShareTapped()
 }
 
-class DetailView: UIView {
+final class DetailView: UIView {
     // MARK: - Properties
     weak var delegate: DetailViewDelegate?
 

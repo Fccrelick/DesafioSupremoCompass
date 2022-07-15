@@ -15,7 +15,7 @@ protocol DetailStatementViewModel {
     func fetchMyStatement(withID ID: String?)
 }
 
-class MyDetailStatementViewModel: DetailStatementViewModel {
+final class MyDetailStatementViewModel: DetailStatementViewModel {
     private let networkService: NetworkService
 
     var item: Item
