@@ -15,6 +15,8 @@ protocol BalanceViewModel {
 }
 
 final class MyBalanceViewModel: BalanceViewModel {
+    // MARK: - Instance Properties
+
     private let networkService: NetworkService
 
     var amount: Int?
@@ -23,10 +25,14 @@ final class MyBalanceViewModel: BalanceViewModel {
 
     var onFetchBalanceFailure: ((Error) -> Void)?
 
+    // MARK: - Initialization
+
     init(networkService: NetworkService){
         self.networkService = networkService
         fetchMyBalance()
     }
+
+    // MARK: - Functions
 
     func fetchMyBalance() {
         let request = MyBalanceRequest()

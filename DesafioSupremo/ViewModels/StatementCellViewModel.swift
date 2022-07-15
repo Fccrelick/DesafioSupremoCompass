@@ -8,6 +8,8 @@
 import Foundation
 
 struct StatementCellViewModel {
+    // MARK: - Instance Properties
+
     let item: Item
 
     var infoLabelText: String? {
@@ -51,6 +53,8 @@ struct StatementCellViewModel {
             return false
         }
     }
+
+    // MARK: - Initialization
 
     init(item: Item){
         self.item = item

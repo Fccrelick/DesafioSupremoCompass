@@ -10,8 +10,7 @@ import UIKit
 private let reuseIdentifier = "StatementTableViewCell"
 
 final class StatementController: UIViewController, Coordinating {
-    // MARK: - Properties
-    let statementView = StatementView()
+    // MARK: - Instance Properties
 
     var coordinator: Coordinator?
 
@@ -25,7 +24,12 @@ final class StatementController: UIViewController, Coordinating {
 
     var viewAppeared = false
 
-    // MARK: - Initializers
+    //MARK: - Views
+
+    let statementView = StatementView()
+
+    // MARK: - Initialization
+
      init(balanceViewModel: MyBalanceViewModel, statementViewModel: MyStatementViewModel) {
         self.balanceViewModel = balanceViewModel
         self.statementViewModel = statementViewModel
@@ -37,7 +41,8 @@ final class StatementController: UIViewController, Coordinating {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // MARK: - Lifecycle
+    // MARK: - Life Cycle
+
     override func loadView() {
         view = statementView
     }
@@ -65,7 +70,8 @@ final class StatementController: UIViewController, Coordinating {
         viewAppeared = true
     }
 
-    // MARK: - Helpers
+    // MARK: - Functions
+
     private func refreshDisplay() {
         balanceViewModel.onFetchBalanceSucceed = {
             DispatchQueue.main.async {

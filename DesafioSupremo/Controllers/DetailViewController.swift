@@ -8,14 +8,17 @@
 import UIKit
 
 final class DetailViewController: UIViewController, Coordinating {
-    //MARK: - Properties
+    //MARK: - Instance Properties
     var coordinator: Coordinator?
 
     var detailStatementViewModel: DetailStatementViewModel
 
+    // MARK: - Views
+
     var detailView = DetailView()
 
-    // MARK: - Initializers
+    // MARK: - Initialization
+
     init(detailStatementViewModel: DetailStatementViewModel) {
         self.detailStatementViewModel = detailStatementViewModel
         super.init(nibName: nil, bundle: nil)
@@ -25,7 +28,8 @@ final class DetailViewController: UIViewController, Coordinating {
         fatalError("init(coder:) has not been implemented")
     }
 
-// MARK: - Lifecycle
+// MARK: - Life Cycle
+
     override func loadView() {
         view = detailView
     }
@@ -38,7 +42,8 @@ final class DetailViewController: UIViewController, Coordinating {
         refreshDisplay()
     }
 
-    // MARK: - Helpers
+    // MARK: - Functions
+
     private func refreshDisplay() {
         detailStatementViewModel.onFetchDetailsSucceed = {
             guard let details = self.detailStatementViewModel.details else {

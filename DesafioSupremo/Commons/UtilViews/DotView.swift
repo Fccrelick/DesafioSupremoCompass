@@ -8,6 +8,8 @@
 import UIKit
 
 final class DotView: UIView {
+    // MARK: - Life Cycle
+
     override func layoutSubviews() {
             layer.cornerRadius = bounds.size.width/2
         }

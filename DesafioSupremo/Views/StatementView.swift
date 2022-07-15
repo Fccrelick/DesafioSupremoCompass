@@ -8,11 +8,14 @@
 import UIKit
 
 final class StatementView: UIView {
-    // MARK: - Properties
+    // MARK: - Instance Properties
+
      var balance: String? {
          get{ return balanceView.balance }
          set{ balanceView.balance = newValue }
     }
+
+    // MARK: - Views
 
     private let balanceView: BalanceView = {
         let view = BalanceView()
@@ -26,7 +29,8 @@ final class StatementView: UIView {
         return tableView
     }()
 
-    // MARK: - Initializers
+    // MARK: - Initialization
+
     override init(frame: CGRect) {
     super.init(frame: frame)
 
@@ -37,7 +41,7 @@ final class StatementView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // MARK: Helpers
+    // MARK: - Functions
     func adjustBalanceViewToNavBar(anchor: NSLayoutYAxisAnchor) {
         balanceView.anchorVertical(top: anchor)
     }

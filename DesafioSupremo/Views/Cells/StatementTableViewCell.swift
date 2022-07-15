@@ -8,10 +8,13 @@
 import UIKit
 
 final class StatementTableViewCell: UITableViewCell {
-    //MARK: - Properties
+    //MARK: - Instance Properties
+
     var item: Item? {
         didSet { configure() }
     }
+
+    // MARK: - Views
 
     private let infoLabel: UILabel = {
         let label = UILabel()
@@ -111,7 +114,8 @@ final class StatementTableViewCell: UITableViewCell {
         return view
     }()
 
-    //MARK: - Initializers
+    //MARK: - Initialization
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
@@ -122,12 +126,14 @@ final class StatementTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // MARK: - Lifecycle
+    // MARK: - Life Cycle
+
     override func prepareForReuse() {
         containerView.backgroundColor = ColorPalette.white
     }
 
-    //MARK: - helpers
+    //MARK: - Functions
+
     private func configure() {
         guard let item = item else {
             return

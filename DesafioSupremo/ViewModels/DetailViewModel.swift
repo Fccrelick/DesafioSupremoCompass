@@ -8,6 +8,8 @@
 import Foundation
 
 struct DetailViewModel {
+    // MARK: - Instance Properties
+
     let details: DetailStatementResponseModel
 
     let item: Item
@@ -64,6 +66,8 @@ struct DetailViewModel {
     var authLabel: String? {
         return details.authentication
     }
+
+    // MARK: - Initialization
 
     init(details: DetailStatementResponseModel, item: Item) {
         self.details = details

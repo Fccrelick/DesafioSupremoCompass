@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 protocol StatementViewModel {
     var MyStatements: [Item]? { set get }
     var onFetchStatementSucceed: (() -> Void)? { set get }
@@ -16,6 +15,8 @@ protocol StatementViewModel {
 }
 
 final class MyStatementViewModel: StatementViewModel {
+    // MARK: - Instance Properties
+
     private let networkService: NetworkService
 
     var MyStatements: [Item]?
@@ -28,10 +29,14 @@ final class MyStatementViewModel: StatementViewModel {
 
     var isPaginating = false
 
+    // MARK: - Initialization
+
     init(networkService: NetworkService) {
         self.networkService = networkService
         fetchMyStatement(pagination: false)
     }
+
+    // MARK: - Functions
 
     func fetchMyStatement(pagination: Bool = false) {
         let request = MyStatementRequest(index: paginationIndex)

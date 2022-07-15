@@ -8,13 +8,16 @@
 import UIKit
 
 final class BalanceView: UIView {
-    //MARK: Properties
+    //MARK: - Instance Properties
+
     var balance: String? {
         get{ return balanceLabel.text }
         set{ balanceLabel.text = newValue}
     }
 
     var eyeButtonSelected = false
+
+    // MARK: - Views
 
     private let balanceLocalizedLabel: UILabel = {
         let label = UILabel()
@@ -80,7 +83,8 @@ final class BalanceView: UIView {
         return view
     }()
 
-    // MARK: - Initializers
+    // MARK: - Initialization
+
     override init(frame: CGRect) {
         super.init(frame: frame)
 

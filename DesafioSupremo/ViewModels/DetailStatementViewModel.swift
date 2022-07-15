@@ -16,6 +16,8 @@ protocol DetailStatementViewModel {
 }
 
 final class MyDetailStatementViewModel: DetailStatementViewModel {
+    // MARK: - Instance Properties
+
     private let networkService: NetworkService
 
     var item: Item
@@ -26,12 +28,15 @@ final class MyDetailStatementViewModel: DetailStatementViewModel {
 
     var onFetchDetailsFailure: ((Error) -> Void)?
 
+    // MARK: - Initialization
+
     init(networkService: NetworkService, item: Item){
         self.networkService = networkService
         self.item = item
         fetchMyStatement(withID: item.id)
     }
 
+    // MARK: - Functions
     func fetchMyStatement(withID ID: String?) {
         guard let ID = ID else {
             return

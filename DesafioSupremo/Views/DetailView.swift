@@ -12,8 +12,11 @@ protocol DetailViewDelegate: AnyObject {
 }
 
 final class DetailView: UIView {
-    // MARK: - Properties
+    // MARK: - Instance Properties
+
     weak var delegate: DetailViewDelegate?
+
+    // MARK: - Views
 
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -202,7 +205,8 @@ final class DetailView: UIView {
         return button
     }()
 
-    // MARK: - Initializers
+    // MARK: - Initialization
+
     override init(frame: CGRect) {
         super.init(frame: frame)
 
@@ -214,12 +218,14 @@ final class DetailView: UIView {
     }
 
     // MARK: - Selectors
+
     @objc
     func handleShareTapped() {
         delegate?.handleShareTapped()
     }
 
-    // MARK: - Helpers
+    // MARK: - Functions
+
     func configure(withViewModel detailViewModel: DetailViewModel) {
         transactionTypeLabel.text = detailViewModel.transferTypeLabel
         valueLabel.text = detailViewModel.valueLabel

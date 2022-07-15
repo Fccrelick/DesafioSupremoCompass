@@ -8,6 +8,7 @@
 import UIKit
 
 final class SpinnerFooterView: UIView {
+    // MARK: - Views
     private lazy var footerView = UIView(frame: CGRect(x: 0, y: 0, width: self.frame.size.width, height: 100))
 
     private lazy var spinner: UIActivityIndicatorView = {
@@ -26,14 +27,16 @@ final class SpinnerFooterView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    deinit {
-        spinner.stopAnimating()
-    }
-
-    // MARK: - Lifecycle
+    // MARK: - Life Cycle
     override func layoutSubviews() {
         addSubview(footerView)
         footerView.addSubview(spinner)
         spinner.startAnimating()
+    }
+
+    override func removeFromSuperview() {
+        super.removeFromSuperview()
+
+        spinner.stopAnimating()
     }
 }
