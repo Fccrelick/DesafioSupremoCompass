@@ -52,11 +52,13 @@ struct DetailViewModel {
     }
 
     var bankLabel: String? {
-        return item.bankName
+        return item.bankName ?? details.bankName
     }
 
     var dateLabel: String? {
-        return details.createdAt
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd/MM/yyyy '-' HH:mm:ss"
+        return formatter.string(from: details.date)
     }
 
     var authLabel: String? {
