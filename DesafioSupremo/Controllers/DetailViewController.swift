@@ -34,6 +34,7 @@ class DetailViewController: UIViewController, Coordinating {
         super.viewDidLoad()
 
         view.backgroundColor = ColorPalette.white
+        detailView.delegate = self
         refreshDisplay()
     }
 
@@ -48,5 +49,35 @@ class DetailViewController: UIViewController, Coordinating {
                 self.detailView.configure(withViewModel: DetailViewModel(details: details, item: self.detailStatementViewModel.item))
             }
         }
+    }
+}
+
+extension DetailViewController: DetailViewDelegate {
+    func handleShareTapped() {
+        let image = screenShotMethod()
+
+        guard let image = image else {
+            return
+        }
+
+        var imagesToShare = [AnyObject]()
+        imagesToShare.append(image)
+
+        let activityViewController = UIActivityViewController(activityItems: imagesToShare , applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = self.view
+        present(activityViewController, animated: true, completion: nil)
+    }
+
+    func screenShotMethod() -> UIImage? {
+        let layer = detailView.screenshotView.layer
+        let scale = UIScreen.main.scale
+        UIGraphicsBeginImageContextWithOptions(layer.frame.size, false, scale);
+
+        layer.render(in: UIGraphicsGetCurrentContext()!)
+        let screenshot = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+
+        return screenshot
+
     }
 }

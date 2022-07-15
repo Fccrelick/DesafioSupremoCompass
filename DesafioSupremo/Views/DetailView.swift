@@ -7,8 +7,14 @@
 
 import UIKit
 
+protocol DetailViewDelegate: AnyObject {
+    func handleShareTapped()
+}
+
 class DetailView: UIView {
     // MARK: - Properties
+    weak var delegate: DetailViewDelegate?
+
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Comprovante"
@@ -181,6 +187,12 @@ class DetailView: UIView {
         return stackView
     }()
 
+    let screenshotView: UIView = {
+        let view = UIView()
+
+        return view
+    }()
+
     private let shareButton: UIButton = {
         let button = UIButton(type: .system)
         button.backgroundColor = ColorPalette.cyan
@@ -204,7 +216,7 @@ class DetailView: UIView {
     // MARK: - Selectors
     @objc
     func handleShareTapped() {
-        
+        delegate?.handleShareTapped()
     }
 
     // MARK: - Helpers
@@ -233,6 +245,10 @@ extension DetailView: ViewCoding {
         stacksContainerView.addSubview(containerStackView)
         addSubview(stacksContainerView)
         addSubview(shareButton)
+        addSubview(screenshotView)
+        screenshotView.addSubview(titleLabel)
+        screenshotView.addSubview(lineView)
+        screenshotView.addSubview(stacksContainerView)
     }
 
     func setupConstraints() {
@@ -263,6 +279,10 @@ extension DetailView: ViewCoding {
             .anchorHorizontal(left: stacksContainerView.leftAnchor,
                               right: stacksContainerView.rightAnchor,
                               leftConstant: 10)
+
+        screenshotView
+            .anchorVertical(top: titleLabel.topAnchor, bottom: stacksContainerView.bottomAnchor)
+            .anchorHorizontal(left: leftAnchor, right: rightAnchor)
 
     }
 
