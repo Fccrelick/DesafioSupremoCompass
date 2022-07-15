@@ -12,7 +12,7 @@ protocol StatementViewModel {
     var MyStatements: [Item]? { set get }
     var onFetchStatementSucceed: (() -> Void)? { set get }
     var onFetchStatementFailure: ((Error) -> Void)? { set get }
-    func fetchMyStatement(pagination: Bool, withIndex index: Int)
+    func fetchMyStatement(pagination: Bool)
 }
 
 final class MyStatementViewModel: StatementViewModel {
@@ -24,15 +24,17 @@ final class MyStatementViewModel: StatementViewModel {
 
     var onFetchStatementFailure: ((Error) -> Void)?
 
+    var paginationIndex = 0
+
     var isPaginating = false
 
-    init(networkService: NetworkService){
+    init(networkService: NetworkService) {
         self.networkService = networkService
-        fetchMyStatement(withIndex: 0)
+        fetchMyStatement(pagination: false)
     }
 
-    func fetchMyStatement(pagination: Bool = false, withIndex index: Int) {
-        let request = MyStatementRequest(index: index)
+    func fetchMyStatement(pagination: Bool = false) {
+        let request = MyStatementRequest(index: paginationIndex)
 
         if pagination{
             isPaginating = true
@@ -43,19 +45,26 @@ final class MyStatementViewModel: StatementViewModel {
             case .success(let statements):
                 if (self?.MyStatements) != nil {
                     self?.MyStatements?.append(contentsOf: statements.items)
-                    print("added new items")
+
                 } else {
                     self?.MyStatements = statements.items
+
                 }
+
                 self?.onFetchStatementSucceed?()
+
                 if pagination {
                     self?.isPaginating = false
                 }
+
+                self?.paginationIndex += 1
             case .failure(let error):
                 self?.onFetchStatementFailure?(error)
+
                 if pagination {
                     self?.isPaginating = false
                 }
+
             }
         }
     }

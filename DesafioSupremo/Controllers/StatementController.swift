@@ -23,8 +23,6 @@ final class StatementController: UIViewController, Coordinating {
         didSet { refreshDisplay() }
     }
 
-    var paginationIndex = 1
-
     var viewAppeared = false
 
     // MARK: - Initializers
@@ -158,8 +156,7 @@ extension StatementController: UIScrollViewDelegate {
 
                 self.statementView.tableView.tableFooterView = createSpinnerFooter()
 
-            statementViewModel.fetchMyStatement(pagination: true, withIndex: paginationIndex)
-                paginationIndex += 1
+                statementViewModel.fetchMyStatement(pagination: true)
             }
         }
     }
