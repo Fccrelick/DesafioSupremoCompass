@@ -127,7 +127,7 @@ final class DetailView: UIView {
 
         return stackView
     }()
-    
+
     private let dateLocalized: UILabel = {
         let label = UILabel()
         label.font = .boldSystemFont(ofSize: 14)
