@@ -50,8 +50,7 @@ final class StatementController: UIViewController, Coordinating {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        statementView.tableView.delegate = self
-        statementView.tableView.dataSource = self
+        setup()
         setupTableView()
         refreshDisplay()
     }
@@ -71,6 +70,11 @@ final class StatementController: UIViewController, Coordinating {
     }
 
     // MARK: - Functions
+
+    private func setup() {
+        view.backgroundColor = ColorPalette.white
+        title = LocaleKeys.statementTitle.localized
+    }
 
     private func refreshDisplay() {
         balanceViewModel.onFetchBalanceSucceed = {
@@ -93,8 +97,8 @@ final class StatementController: UIViewController, Coordinating {
     }
 
     private func setupTableView() {
-        view.backgroundColor = ColorPalette.white
-        title = LocaleKeys.statementTitle.localized
+        statementView.tableView.delegate = self
+        statementView.tableView.dataSource = self
         statementView.tableView.register(StatementTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
         statementView.tableView.backgroundColor = ColorPalette.white
         statementView.tableView.separatorStyle = .none
