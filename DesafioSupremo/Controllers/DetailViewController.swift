@@ -95,8 +95,6 @@ extension DetailViewController: DetailViewDelegate {
         var imagesToShare = [AnyObject]()
         imagesToShare.append(image)
 
-        let activityViewController = UIActivityViewController(activityItems: imagesToShare , applicationActivities: nil)
-        activityViewController.popoverPresentationController?.sourceView = self.view
-        present(activityViewController, animated: true, completion: nil)
+        coordinator?.eventOccurred(with: .shareButtonTapped(imagesToShare: imagesToShare))
     }
 }

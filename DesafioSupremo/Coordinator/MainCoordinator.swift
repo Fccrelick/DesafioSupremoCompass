@@ -22,6 +22,14 @@ class MainCoordinator: Coordinator {
             vc.coordinator = self
 
             navigationController?.pushViewController(vc, animated: true)
+
+        case .shareButtonTapped(let imagesToShare):
+            let activityViewController = UIActivityViewController(activityItems: imagesToShare , applicationActivities: nil)
+
+            activityViewController.popoverPresentationController?.sourceView = navigationController?.viewControllers.last?.view
+
+            navigationController?.present(activityViewController, animated: true, completion: nil)
+
         }
     }
 
