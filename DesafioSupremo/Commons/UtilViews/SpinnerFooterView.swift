@@ -9,6 +9,7 @@ import UIKit
 
 final class SpinnerFooterView: UIView {
     // MARK: - Views
+
     private lazy var footerView = UIView(frame: CGRect(x: 0, y: 0, width: self.frame.size.width, height: 100))
 
     private lazy var spinner: UIActivityIndicatorView = {
@@ -19,6 +20,7 @@ final class SpinnerFooterView: UIView {
     }()
 
     // MARK: - Initialization
+
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -28,6 +30,7 @@ final class SpinnerFooterView: UIView {
     }
 
     // MARK: - Life Cycle
+
     override func layoutSubviews() {
         addSubview(footerView)
         footerView.addSubview(spinner)
