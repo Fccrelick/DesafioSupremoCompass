@@ -24,11 +24,13 @@ class MainCoordinator: Coordinator {
             navigationController?.pushViewController(vc, animated: true)
 
         case .shareButtonTapped(let imagesToShare):
-            let activityViewController = UIActivityViewController(activityItems: imagesToShare , applicationActivities: nil)
+            let activityViewController = UIActivityViewController(activityItems: imagesToShare,
+                                                                  applicationActivities: nil)
 
-            activityViewController.popoverPresentationController?.sourceView = navigationController?.viewControllers.last?.view
+            activityViewController.popoverPresentationController?.sourceView = navigationController?
+                                                                                .viewControllers.last?.view
 
-            navigationController?.present(activityViewController, animated: true, completion: nil)
+            navigationController?.present(activityViewController, animated: true)
 
         }
     }
@@ -38,7 +40,7 @@ class MainCoordinator: Coordinator {
         let statementViewModel = MyStatementViewModel(networkService: DefaultNetworkService())
 
         var vc: UIViewController & Coordinating = StatementController(balanceViewModel: balanceViewModel,
-                                                                           statementViewModel: statementViewModel)
+                                                                      statementViewModel: statementViewModel)
 
         vc.coordinator = self
 

@@ -23,7 +23,7 @@ struct MyBalanceRequest: DataRequest {
     }
 
     var headers: [String : String] {
-        [   
+        [
             "token" : token
         ]
     }
