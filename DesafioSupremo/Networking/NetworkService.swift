@@ -40,7 +40,7 @@ final class DefaultNetworkService: NetworkService {
                 code: 404,
                 userInfo: nil
             )
-            
+
             return completion(.failure(error))
         }
 
@@ -52,15 +52,15 @@ final class DefaultNetworkService: NetworkService {
             if let error = error {
                 return completion(.failure(error))
             }
-            
+
             guard let response = response as? HTTPURLResponse, 200..<300 ~= response.statusCode else {
                 return completion(.failure(NSError()))
             }
-            
+
             guard let data = data else {
                 return completion(.failure(NSError()))
             }
-            
+
             do {
                 try completion(.success(request.decode(data)))
             } catch let error as NSError {

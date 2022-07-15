@@ -37,7 +37,7 @@ extension DataRequest {
     var headers: [String : String] {
         [:]
     }
-    
+
     var queryItems: [String : String] {
         [:]
     }
