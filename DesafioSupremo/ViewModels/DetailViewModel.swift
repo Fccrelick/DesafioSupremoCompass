@@ -45,7 +45,7 @@ struct DetailViewModel {
 
     var toLabel: String? {
         if isSameAccount{
-            return "Sua Conta"
+            return LocaleKeys.yourAccount.localized
         }
 
         return item.to

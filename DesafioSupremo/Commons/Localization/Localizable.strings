@@ -15,3 +15,13 @@
 
 // MARK: - StatementTableViewCell
 "pixLabel" = "Pix";
+
+// MARK: - DetailView
+"titleLabel" = "Comprovante";
+"transactionTypeLocalized" = "Tipo de movimentação";
+"valueLocalized" = "Valor";
+"toLocalized" = "Recebedor";
+"bankLocalized" = "Instituição bancária";
+"dateLocalized" = "Data/Hora";
+"authLocalized" = "Autenticação";
+"yourAccount" = "Sua Conta";

@@ -18,5 +18,15 @@ enum LocaleKeys: String {
     // MARK: - StatementTableViewCell
     case pixLabel
 
+    // MARK: - DetailView
+    case titleLabel
+    case transactionTypeLocalized
+    case valueLocalized
+    case toLocalized
+    case bankLocalized
+    case dateLocalized
+    case authLocalized
+    case yourAccount
+
     var localized: String { NSLocalizedString(rawValue, comment: "") }
 }

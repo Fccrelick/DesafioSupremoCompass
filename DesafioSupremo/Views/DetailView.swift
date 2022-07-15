@@ -17,7 +17,7 @@ class DetailView: UIView {
 
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Comprovante"
+        label.text = LocaleKeys.titleLabel.localized
 
         return label
     }()
@@ -32,7 +32,7 @@ class DetailView: UIView {
     private let transactionTypeLocalized: UILabel = {
         let label = UILabel()
         label.font = .boldSystemFont(ofSize: 14)
-        label.text = "Tipo de movimentação"
+        label.text = LocaleKeys.transactionTypeLocalized.localized
 
         return label
     }()
@@ -56,7 +56,7 @@ class DetailView: UIView {
     private let valueLocalized: UILabel = {
         let label = UILabel()
         label.font = .boldSystemFont(ofSize: 14)
-        label.text = "Valor"
+        label.text = LocaleKeys.valueLocalized.localized
 
         return label
     }()
@@ -80,7 +80,7 @@ class DetailView: UIView {
     private let toLocalized: UILabel = {
         let label = UILabel()
         label.font = .boldSystemFont(ofSize: 14)
-        label.text = "Recebedor"
+        label.text = LocaleKeys.toLocalized.localized
 
         return label
     }()
@@ -104,7 +104,7 @@ class DetailView: UIView {
     private let bankLocalized: UILabel = {
         let label = UILabel()
         label.font = .boldSystemFont(ofSize: 14)
-        label.text = "Instituição bancária"
+        label.text = LocaleKeys.bankLocalized.localized
 
         return label
     }()
@@ -128,7 +128,7 @@ class DetailView: UIView {
     private let dateLocalized: UILabel = {
         let label = UILabel()
         label.font = .boldSystemFont(ofSize: 14)
-        label.text = "Data/Hora"
+        label.text = LocaleKeys.dateLocalized.localized
 
         return label
     }()
@@ -152,7 +152,7 @@ class DetailView: UIView {
     private let authLocalized: UILabel = {
         let label = UILabel()
         label.font = .boldSystemFont(ofSize: 14)
-        label.text = "Autenticação"
+        label.text = LocaleKeys.authLocalized.localized
 
         return label
     }()
