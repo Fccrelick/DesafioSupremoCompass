@@ -34,7 +34,6 @@ class DetailView: UIView {
     private let transactionTypeLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14)
-        label.text = "Transferencia enviada"
 
         return label
     }()
@@ -59,7 +58,6 @@ class DetailView: UIView {
     private let valueLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14)
-        label.text = "R$ 100,00"
 
         return label
     }()
@@ -84,7 +82,6 @@ class DetailView: UIView {
     private let toLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14)
-        label.text = "David Bond"
 
         return label
     }()
@@ -109,7 +106,6 @@ class DetailView: UIView {
     private let bankLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14)
-        label.text = "Banco Phi"
 
         return label
     }()
@@ -134,7 +130,6 @@ class DetailView: UIView {
     private let dateLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14)
-        label.text = "13/10/2020 - 15:27:02"
 
         return label
     }()
@@ -159,7 +154,6 @@ class DetailView: UIView {
     private let authLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14)
-        label.text = "123445345"
 
         return label
     }()
@@ -207,10 +201,20 @@ class DetailView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    //MARK: - Selectors
+    // MARK: - Selectors
     @objc
     func handleShareTapped() {
         
+    }
+
+    // MARK: - Helpers
+    func configure(withViewModel detailViewModel: DetailViewModel) {
+        transactionTypeLabel.text = detailViewModel.transferTypeLabel
+        valueLabel.text = detailViewModel.valueLabel
+        toLabel.text = detailViewModel.toLabel
+        bankLabel.text = detailViewModel.bankLabel
+        dateLabel.text = detailViewModel.dateLabel
+        authLabel.text = detailViewModel.authLabel
     }
 }
 

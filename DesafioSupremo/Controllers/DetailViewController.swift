@@ -33,12 +33,19 @@ class DetailViewController: UIViewController, Coordinating {
         super.viewDidLoad()
 
         view.backgroundColor = ColorPalette.white
+        refreshDisplay()
     }
 
     // MARK: - Helpers
     private func refreshDisplay() {
         detailStatementViewModel.onFetchDetailsSucceed = {
-            
+            guard let details = self.detailStatementViewModel.details else {
+                return
+            }
+
+            DispatchQueue.main.async {
+                self.detailView.configure(withViewModel: DetailViewModel(details: details, item: self.detailStatementViewModel.item))
+            }
         }
     }
 }

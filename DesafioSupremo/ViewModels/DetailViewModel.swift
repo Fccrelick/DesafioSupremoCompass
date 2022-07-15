@@ -10,23 +10,49 @@ import Foundation
 struct DetailViewModel {
     let details: DetailStatementResponseModel
 
+    let item: Item
+
+    var isSameAccount: Bool {
+        guard let item = item.itemType else {
+            return false
+        }
+
+        switch item {
+        case .transferOut:
+            return false
+        case .transferIn:
+            return true
+        case .pixCashIn:
+            return true
+        case .pixCashOut:
+            return false
+        case .bankSlipCashIn:
+            return true
+        }
+    }
+
     var transferTypeLabel: String? {
-        return details.tType
+        return details.description
     }
 
     var valueLabel: String? {
         guard let amount = details.amount else {
             return nil
         }
+
         return String(amount)
     }
 
     var toLabel: String? {
-        return details.from
+        if isSameAccount{
+            return "Sua Conta"
+        }
+
+        return item.to
     }
 
     var bankLabel: String? {
-        return details.bankName
+        return item.bankName
     }
 
     var dateLabel: String? {
@@ -37,7 +63,8 @@ struct DetailViewModel {
         return details.authentication
     }
 
-    init(details: DetailStatementResponseModel) {
+    init(details: DetailStatementResponseModel, item: Item) {
         self.details = details
+        self.item = item
     }
 }

@@ -8,7 +8,7 @@
 import Foundation
 
 struct DetailStatementResponseModel: Codable {
-    var createdAt: String?
+    var createdAt: String
     var tType: String?
     var authentication: String?
     var description: String?
@@ -16,4 +16,27 @@ struct DetailStatementResponseModel: Codable {
     var id: String?
     var amount: Int?
     var bankName: String?
+}
+
+extension DetailStatementResponseModel {
+    var date: Date {
+        return createdAt.stringToDate()
+    }
+
+    var itemType: ItemType? {
+        switch tType {
+        case ItemType.transferOut.rawValue.uppercased():
+            return ItemType.transferOut
+        case ItemType.transferIn.rawValue.uppercased():
+            return ItemType.transferIn
+        case ItemType.pixCashIn.rawValue.uppercased():
+            return ItemType.pixCashIn
+        case ItemType.pixCashOut.rawValue.uppercased():
+            return ItemType.pixCashOut
+        case ItemType.transferIn.rawValue.uppercased():
+            return ItemType.bankSlipCashIn
+        default:
+            return nil
+        }
+    }
 }
