@@ -256,7 +256,9 @@ extension DetailView: ViewCoding {
     func setupStackViewConstraints() {
         containerStackView
             .anchorVertical(top: stacksContainerView.topAnchor, topConstant: 20)
-            .anchorHorizontal(left: stacksContainerView.leftAnchor, right: stacksContainerView.rightAnchor, leftConstant: 10)
+            .anchorHorizontal(left: stacksContainerView.leftAnchor,
+                              right: stacksContainerView.rightAnchor,
+                              leftConstant: 10)
 
     }
 

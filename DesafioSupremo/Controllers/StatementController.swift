@@ -69,14 +69,6 @@ class StatementController: UIViewController, Coordinating {
 
     // MARK: - Helpers
     private func refreshDisplay() {
-//        guard let balanceViewModel = balanceViewModel else {
-//            return
-//        }
-//
-//        guard let statementViewModel = statementViewModel else {
-//            return
-//        }
-
         balanceViewModel.onFetchBalanceSucceed = {
             DispatchQueue.main.async {
                 let query = KeychainHelper.standard.read(service: "balance")
@@ -109,7 +101,6 @@ class StatementController: UIViewController, Coordinating {
 
 extension StatementController: UITableViewDataSource {
      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        guard let statementViewModel = statementViewModel else { return 0 }
         guard let items = statementViewModel.MyStatements else { return 0 }
         return items.count
     }
@@ -119,9 +110,6 @@ extension StatementController: UITableViewDataSource {
                 StatementTableViewCell else {
             return UITableViewCell()
         }
-//              let statementViewModel = statementViewModel else {
-//            return UITableViewCell()
-//        }
 
         cell.item = statementViewModel.MyStatements?[indexPath.row]
 
@@ -133,7 +121,6 @@ extension StatementController: UITableViewDataSource {
 
 extension StatementController: UITableViewDelegate {
      func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        guard let statementViewModel = statementViewModel else { return }
         guard let items = statementViewModel.MyStatements else { return }
         tableView.deselectRow(at: indexPath, animated: true)
         coordinator?.eventOccurred(with: .statementCellTapped(item: items[indexPath.row]))
@@ -162,9 +149,6 @@ extension StatementController: UIScrollViewDelegate {
      func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let position = scrollView.contentOffset.y
          if position > (self.statementView.tableView.contentSize.height-50-scrollView.frame.size.height) {
-//            guard let statementViewModel = statementViewModel else {
-//                return
-//            }
 
             guard !statementViewModel.isPaginating else {
                 return
