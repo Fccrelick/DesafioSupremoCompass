@@ -122,6 +122,11 @@ class StatementTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
+    // MARK: - Lifecycle
+    override func prepareForReuse() {
+        containerView.backgroundColor = ColorPalette.white
+    }
+
     //MARK: - helpers
     private func configure() {
         guard let item = item else {
