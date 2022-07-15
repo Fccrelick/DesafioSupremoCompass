@@ -30,6 +30,8 @@ class DetailViewController: UIViewController, Coordinating {
     }
 
     override func viewDidLoad() {
-        view.backgroundColor = .purple
+        super.viewDidLoad()
+
+        view.backgroundColor = ColorPalette.white
     }
 }
