@@ -52,6 +52,8 @@ final class DetailViewController: UIViewController, Coordinating {
     }
 }
 
+// MARK: - DetailViewDelegate
+
 extension DetailViewController: DetailViewDelegate {
     func handleShareTapped() {
         let image = screenShotMethod()
