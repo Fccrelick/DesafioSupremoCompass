@@ -9,6 +9,7 @@ import UIKit
 
 final class DetailViewController: UIViewController, Coordinating {
     //MARK: - Instance Properties
+
     var coordinator: Coordinator?
 
     var detailStatementViewModel: DetailStatementViewModel
@@ -22,6 +23,7 @@ final class DetailViewController: UIViewController, Coordinating {
     init(detailStatementViewModel: DetailStatementViewModel) {
         self.detailStatementViewModel = detailStatementViewModel
         super.init(nibName: nil, bundle: nil)
+
     }
 
     required init?(coder: NSCoder) {
@@ -37,12 +39,16 @@ final class DetailViewController: UIViewController, Coordinating {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = ColorPalette.white
-        detailView.delegate = self
+        setup()
         refreshDisplay()
     }
 
     // MARK: - Functions
+
+    private func setup() {
+        view.backgroundColor = ColorPalette.white
+        detailView.delegate = self
+    }
 
     private func refreshDisplay() {
         detailStatementViewModel.onFetchDetailsSucceed = {
@@ -55,13 +61,32 @@ final class DetailViewController: UIViewController, Coordinating {
             }
         }
     }
+
+    private func takeDetailScreenshot() -> UIImage? {
+        let layer = detailView.screenshotView.layer
+        let scale = UIScreen.main.scale
+
+        UIGraphicsBeginImageContextWithOptions(layer.frame.size, false, scale);
+
+        guard let currentContext = UIGraphicsGetCurrentContext() else {
+            return nil
+        }
+
+        layer.render(in: currentContext)
+        let screenshot = UIGraphicsGetImageFromCurrentImageContext()
+
+        UIGraphicsEndImageContext()
+
+        return screenshot
+
+    }
 }
 
 // MARK: - DetailViewDelegate
 
 extension DetailViewController: DetailViewDelegate {
     func handleShareTapped() {
-        let image = screenShotMethod()
+        let image = takeDetailScreenshot()
 
         guard let image = image else {
             return
@@ -73,18 +98,5 @@ extension DetailViewController: DetailViewDelegate {
         let activityViewController = UIActivityViewController(activityItems: imagesToShare , applicationActivities: nil)
         activityViewController.popoverPresentationController?.sourceView = self.view
         present(activityViewController, animated: true, completion: nil)
-    }
-
-    func screenShotMethod() -> UIImage? {
-        let layer = detailView.screenshotView.layer
-        let scale = UIScreen.main.scale
-        UIGraphicsBeginImageContextWithOptions(layer.frame.size, false, scale);
-
-        layer.render(in: UIGraphicsGetCurrentContext()!)
-        let screenshot = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-
-        return screenshot
-
     }
 }
