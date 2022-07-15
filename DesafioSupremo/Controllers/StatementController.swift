@@ -128,17 +128,6 @@ extension StatementController: UITableViewDelegate {
         let value = Int(view.frame.height * 0.65) / 5
         return CGFloat(value)
     }
-
-    private func createSpinnerFooter() -> UIView {
-        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 100))
-
-        let spinner = UIActivityIndicatorView()
-        spinner.center = footerView.center
-        footerView.addSubview(spinner)
-        spinner.startAnimating()
-
-        return footerView
-    }
 }
 
 // MARK: - ScrollViewDelegate
@@ -154,7 +143,7 @@ extension StatementController: UIScrollViewDelegate {
 
             if viewAppeared {
 
-                self.statementView.tableView.tableFooterView = createSpinnerFooter()
+                self.statementView.tableView.tableFooterView = SpinnerFooterView()
 
                 statementViewModel.fetchMyStatement(pagination: true)
             }
