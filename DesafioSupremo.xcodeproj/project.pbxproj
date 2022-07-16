@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5E096B6628830637005E4796 /* DateFormatterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E096B6528830637005E4796 /* DateFormatterExtension.swift */; };
 		5E8E5901287CD6490047F287 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8E5900287CD6490047F287 /* AppDelegate.swift */; };
 		5E8E5903287CD6490047F287 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8E5902287CD6490047F287 /* SceneDelegate.swift */; };
 		5E8E5908287CD6490047F287 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E8E5906287CD6490047F287 /* Main.storyboard */; };
@@ -49,6 +50,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5E096B6528830637005E4796 /* DateFormatterExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterExtension.swift; sourceTree = "<group>"; };
 		5E8E58FD287CD6490047F287 /* DesafioSupremo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DesafioSupremo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E8E5900287CD6490047F287 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5E8E5902287CD6490047F287 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 				5E8E5929287CDE200047F287 /* UIViewExtension.swift */,
 				5EF8A31E28809A9C00B641AC /* IntExtension.swift */,
 				5EF8A32028809AB100B641AC /* DataExtension.swift */,
+				5E096B6528830637005E4796 /* DateFormatterExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -336,6 +339,7 @@
 			files = (
 				5EF79F1C287DE19C001FBBE1 /* AppTheme.swift in Sources */,
 				5EF79F16287DD001001FBBE1 /* StatementCellViewModel.swift in Sources */,
+				5E096B6628830637005E4796 /* DateFormatterExtension.swift in Sources */,
 				5E8E5916287CD6840047F287 /* Coordinator.swift in Sources */,
 				5E8E591B287CD8420047F287 /* StatementController.swift in Sources */,
 				5EF8A31928806C8200B641AC /* LineView.swift in Sources */,

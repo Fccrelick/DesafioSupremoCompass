@@ -34,9 +34,7 @@ struct MyStatementRequest: DataRequest {
 
     func decode(_ data: Data) throws -> Response {
         let decoder = JSONDecoder()
-        let formatter = DateFormatter()
-        formatter.dateFormat = LocaleKeys.apiDateFormat.localized
-        decoder.dateDecodingStrategy = .formatted(formatter)
+        decoder.dateDecodingStrategy = .formatted(DateFormatter.apiDateFormatter)
         let response = try decoder.decode(MyStatementResponseModel.self, from: data)
         return response
     }

@@ -58,14 +58,11 @@ struct DetailViewModel {
     }
 
     var dateLabel: String? {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd/MM/yyyy '-' HH:mm:ss"
-
         guard let date = details.createdAt else {
             return nil
         }
 
-        return formatter.string(from: date)
+        return DateFormatter.detailDateFormatter.string(from: date)
     }
 
     var authLabel: String? {

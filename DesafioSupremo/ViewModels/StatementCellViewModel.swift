@@ -25,19 +25,19 @@ struct StatementCellViewModel {
     }
 
     var amountLabelText: String? {
-        guard let value = item.amount else { return nil }
+        guard let value = item.amount else {
+            return nil
+        }
+
         return "R$ \(value),00"
     }
 
     var dateLabel: String? {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd/MM"
-
         guard let date = item.createdAt else {
             return nil
         }
 
-        return formatter.string(from: date)
+        return DateFormatter.statementDateFormatter.string(from: date)
     }
 
     var isPix: Bool {
