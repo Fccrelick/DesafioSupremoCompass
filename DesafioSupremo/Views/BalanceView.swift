@@ -99,18 +99,35 @@ final class BalanceView: UIView {
     @objc
     func handleEyeButtonTapped() {
         if eyeButtonSelected {
-            headerStackView.removeArrangedSubview(lineView)
-            headerStackView.addArrangedSubview(balanceLabel)
-            eyeButton.setImage(UIImage(named: "eyeIcon-show"), for: .normal)
-            lineView.isHidden.toggle()
-            eyeButtonSelected.toggle()
+
+            showBalance()
+
         } else {
-            headerStackView.removeArrangedSubview(balanceLabel)
-            headerStackView.addArrangedSubview(lineView)
-            eyeButton.setImage(UIImage(named: "eyeIcon-hide"), for: .normal)
-            lineView.isHidden.toggle()
-            eyeButtonSelected.toggle()
+
+            hideBalance()
+
         }
+    }
+
+    // MARK: - Functions
+
+    private func hideBalance() {
+        headerStackView.removeArrangedSubview(balanceLabel)
+        headerStackView.addArrangedSubview(lineView)
+        eyeButton.setImage(UIImage(named: "eyeIcon-hide"), for: .normal)
+        toggleIsHidden()
+    }
+
+    private func showBalance() {
+        headerStackView.removeArrangedSubview(lineView)
+        headerStackView.addArrangedSubview(balanceLabel)
+        eyeButton.setImage(UIImage(named: "eyeIcon-show"), for: .normal)
+        toggleIsHidden()
+    }
+
+    private func toggleIsHidden() {
+        lineView.isHidden.toggle()
+        eyeButtonSelected.toggle()
     }
 }
 
