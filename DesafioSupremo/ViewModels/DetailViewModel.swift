@@ -15,11 +15,8 @@ struct DetailViewModel {
     let item: Item
 
     var isSameAccount: Bool {
-        guard let item = item.itemType else {
-            return false
-        }
 
-        switch item {
+        switch item.tType {
         case .transferOut:
             return false
         case .transferIn:
@@ -31,6 +28,7 @@ struct DetailViewModel {
         case .bankSlipCashIn:
             return true
         }
+
     }
 
     var transferTypeLabel: String? {

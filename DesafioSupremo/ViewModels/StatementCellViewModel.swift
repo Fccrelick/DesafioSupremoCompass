@@ -41,11 +41,8 @@ struct StatementCellViewModel {
     }
 
     var isPix: Bool {
-        guard let itemType = item.itemType else {
-            return false
-        }
 
-        switch itemType {
+        switch item.tType {
         case .transferOut:
             return false
         case .transferIn:
@@ -57,6 +54,7 @@ struct StatementCellViewModel {
         case .bankSlipCashIn:
             return false
         }
+
     }
 
     // MARK: - Initialization

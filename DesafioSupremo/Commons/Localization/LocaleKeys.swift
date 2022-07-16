@@ -11,6 +11,13 @@ enum LocaleKeys: String {
     // MARK: - APIDateFormat
     case apiDateFormat
 
+    // MARK: - ItemTypeEnum
+    case transferOut
+    case transferIn
+    case pixCashIn
+    case pixCashOut
+    case bankSlipCashIn
+
     // MARK: - StatementController
     case statementTitle
 

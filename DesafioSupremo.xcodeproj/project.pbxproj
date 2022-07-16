@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5E096B6628830637005E4796 /* DateFormatterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E096B6528830637005E4796 /* DateFormatterExtension.swift */; };
+		5E096B6828831066005E4796 /* ItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E096B6728831066005E4796 /* ItemType.swift */; };
 		5E8E5901287CD6490047F287 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8E5900287CD6490047F287 /* AppDelegate.swift */; };
 		5E8E5903287CD6490047F287 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8E5902287CD6490047F287 /* SceneDelegate.swift */; };
 		5E8E5908287CD6490047F287 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E8E5906287CD6490047F287 /* Main.storyboard */; };
@@ -51,6 +52,7 @@
 
 /* Begin PBXFileReference section */
 		5E096B6528830637005E4796 /* DateFormatterExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterExtension.swift; sourceTree = "<group>"; };
+		5E096B6728831066005E4796 /* ItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemType.swift; sourceTree = "<group>"; };
 		5E8E58FD287CD6490047F287 /* DesafioSupremo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DesafioSupremo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E8E5900287CD6490047F287 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5E8E5902287CD6490047F287 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				5E8E5924287CDB8D0047F287 /* MyBalanceResponseModel.swift */,
+				5E096B6728831066005E4796 /* ItemType.swift */,
 				5E8E5922287CDADC0047F287 /* MyStatementResponseModel.swift */,
 				5EF8A3222880B7E500B641AC /* DetailStatementResponseModel.swift */,
 			);
@@ -349,6 +352,7 @@
 				5EF8A3252880C55B00B641AC /* DetailStatementRequest.swift in Sources */,
 				5E8E5935287CE5600047F287 /* MyStatementRequest.swift in Sources */,
 				5E8E5930287CE2910047F287 /* DataRequest.swift in Sources */,
+				5E096B6828831066005E4796 /* ItemType.swift in Sources */,
 				5EF79F27287E2CDE001FBBE1 /* DetailView.swift in Sources */,
 				5EF79F1A287DE15E001FBBE1 /* UIColorExtension.swift in Sources */,
 				5EF8A31D2880971900B641AC /* KeychainHelper.swift in Sources */,

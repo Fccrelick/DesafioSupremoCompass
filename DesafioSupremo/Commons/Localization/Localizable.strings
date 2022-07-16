@@ -9,6 +9,13 @@
 // MARK: - APIDateFormat
 "apiDateFormat" = "yyyy/MM/dd'T'HH:mm:ss'Z'";
 
+// MARK: - ItemTypeEnum
+"transferOut" = "TRANSFEROUT";
+"transferIn" = "TRANSFERIN";
+"pixCashIn" = "PIXCASHIN";
+"pixCashOut" = "PIXCASHOUT";
+"bankSlipCashIn" = "BANKSLIPCASHIN";
+
 // MARK: - StatementController
 "statementTitle" = "Extrato";
 
