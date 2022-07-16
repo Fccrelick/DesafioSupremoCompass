@@ -39,8 +39,8 @@ final class DetailViewController: UIViewController, Coordinating {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        detailStatementViewModel.delegate = self
         setup()
-        refreshDisplay()
     }
 
     // MARK: - Functions
@@ -48,18 +48,6 @@ final class DetailViewController: UIViewController, Coordinating {
     private func setup() {
         view.backgroundColor = ColorPalette.white
         detailView.delegate = self
-    }
-
-    private func refreshDisplay() {
-        detailStatementViewModel.onFetchDetailsSucceed = {
-            guard let details = self.detailStatementViewModel.details else {
-                return
-            }
-
-            DispatchQueue.main.async {
-                self.detailView.configure(withViewModel: DetailViewModel(details: details, item: self.detailStatementViewModel.item))
-            }
-        }
     }
 
     private func takeDetailScreenshot() -> UIImage? {
@@ -96,5 +84,27 @@ extension DetailViewController: DetailViewDelegate {
         imagesToShare.append(image)
 
         coordinator?.eventOccurred(with: .shareButtonTapped(imagesToShare: imagesToShare))
+    }
+}
+
+// MARK: - DetailFetchResultDelegate
+
+extension DetailViewController: DetailFetchResultDelegate {
+    func detailFetchSuccess() {
+        guard let details = self.detailStatementViewModel.details else {
+            return
+        }
+
+        DispatchQueue.main.async {
+            self.detailView.configure(withViewModel: DetailViewModel(details: details, item: self.detailStatementViewModel.item))
+        }
+    }
+
+    func detailFetchFailure(error: Error) {
+
+            DispatchQueue.main.async {
+                self.coordinator?.eventOccurred(with: .apiError(message: error.localizedDescription))
+            }
+
     }
 }

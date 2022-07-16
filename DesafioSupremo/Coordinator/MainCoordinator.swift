@@ -32,6 +32,10 @@ class MainCoordinator: Coordinator {
 
             navigationController?.present(activityViewController, animated: true)
 
+        case .apiError(message: let message):
+                let alertViewController = createAlert(withMessage: message)
+
+                navigationController?.present(alertViewController, animated: true)
         }
     }
 
@@ -45,5 +49,14 @@ class MainCoordinator: Coordinator {
         vc.coordinator = self
 
         navigationController?.setViewControllers([vc], animated: true)
+    }
+
+    private func createAlert(withMessage message: String) -> UIAlertController {
+
+        let alertMessage = message + LocaleKeys.tryAgain.localized
+        let alert = UIAlertController(title: LocaleKeys.AlertTitle.localized, message: alertMessage, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: LocaleKeys.alertButtonTitle.localized, style: .default))
+
+        return alert
     }
 }

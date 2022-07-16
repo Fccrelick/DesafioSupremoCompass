@@ -8,6 +8,11 @@
 import Foundation
 
 enum LocaleKeys: String {
+    // MARK: - GenericAlert
+    case AlertTitle
+    case tryAgain
+    case alertButtonTitle
+
     // MARK: - APIDateFormat
     case apiDateFormat
 

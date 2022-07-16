@@ -6,6 +6,11 @@
   
 */
 
+// MARK: - GenericAlert
+"AlertTitle" = "Alert";
+"tryAgain" = " Tente Novamente";
+"alertButtonTitle" = "Ok";
+
 // MARK: - APIDateFormat
 "apiDateFormat" = "yyyy/MM/dd'T'HH:mm:ss'Z'";
 

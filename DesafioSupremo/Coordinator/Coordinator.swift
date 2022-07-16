@@ -10,6 +10,7 @@ import UIKit
 enum Event{
     case statementCellTapped(item: Item)
     case shareButtonTapped(imagesToShare: [AnyObject])
+    case apiError(message: String)
 }
 
 protocol Coordinator {

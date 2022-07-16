@@ -14,13 +14,9 @@ final class StatementController: UIViewController, Coordinating {
 
     var coordinator: Coordinator?
 
-    var balanceViewModel: MyBalanceViewModel {
-        didSet{ refreshDisplay() }
-    }
+    var balanceViewModel: MyBalanceViewModel
 
-    var statementViewModel: MyStatementViewModel {
-        didSet { refreshDisplay() }
-    }
+    var statementViewModel: MyStatementViewModel
 
     var viewAppeared = false
 
@@ -50,9 +46,9 @@ final class StatementController: UIViewController, Coordinating {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        balanceViewModel.delegate = self
+        statementViewModel.delegate = self
         setup()
-        setupTableView()
-        refreshDisplay()
     }
 
     override func viewDidLayoutSubviews() {
@@ -74,6 +70,7 @@ final class StatementController: UIViewController, Coordinating {
     private func setup() {
         view.backgroundColor = ColorPalette.white
         title = LocaleKeys.statementTitle.localized
+        setupTableView()
     }
 
     private func setupTableView() {
@@ -84,40 +81,6 @@ final class StatementController: UIViewController, Coordinating {
         statementView.tableView.separatorStyle = .none
     }
 
-    private func refreshDisplay() {
-        onSuccess()
-        onFailure()
-    }
-
-    private func onSuccess() {
-        balanceViewModel.onFetchBalanceSucceed = {
-            DispatchQueue.main.async {
-                let query = KeychainHelper.standard.read(service: "balance")
-                if let balance = query?.toInt() {
-                    self.statementView.balance = "R$ \(balance),00"
-                }
-
-                self.statementView.tableView.reloadData()
-            }
-        }
-
-        statementViewModel.onFetchStatementSucceed = {
-            DispatchQueue.main.async {
-                self.statementView.tableView.tableFooterView = nil
-                self.statementView.tableView.reloadData()
-            }
-        }
-    }
-
-    private func onFailure() {
-        balanceViewModel.onFetchBalanceFailure = { [weak self] error in
-//            print(error)
-        }
-
-    statementViewModel.onFetchStatementFailure = { [weak self] error in
-//            print(error)
-        }
-    }
 }
 
 // MARK: - UITableViewDataSource
@@ -172,6 +135,43 @@ extension StatementController: UIScrollViewDelegate {
 
                 statementViewModel.fetchMyStatement(pagination: true)
             }
+        }
+    }
+}
+
+// MARK: -  BalanceFetchResultDelegate
+
+extension StatementController: BalanceFetchResultDelegate {
+    func balanceFetchSuccess() {
+        let query = KeychainHelper.standard.read(service: "balance")
+
+        if let balance = query?.toInt() {
+            DispatchQueue.main.async {
+                self.statementView.balance = "R$ \(balance),00"
+            }
+        }
+    }
+
+    func balanceFetchFailure(error: Error) {
+        DispatchQueue.main.async {
+            self.coordinator?.eventOccurred(with: .apiError(message: error.localizedDescription))
+        }
+    }
+}
+
+// MARK: -  StatementFetchResultDelegate
+
+extension StatementController: StatementFetchResultDelegate {
+    func StatementFetchSuccess() {
+        DispatchQueue.main.async {
+            self.statementView.tableView.tableFooterView = nil
+            self.statementView.tableView.reloadData()
+        }
+    }
+
+    func StatementFetchFailure(error: Error) {
+        DispatchQueue.main.async {
+            self.coordinator?.eventOccurred(with: .apiError(message: error.localizedDescription))
         }
     }
 }

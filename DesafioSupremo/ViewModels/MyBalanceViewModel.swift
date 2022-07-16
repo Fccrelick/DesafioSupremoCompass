@@ -9,9 +9,13 @@ import Foundation
 
 protocol BalanceViewModel {
     var amount: Int? { set get }
-    var onFetchBalanceSucceed: (() -> Void)? { set get }
-    var onFetchBalanceFailure: ((Error) -> Void)? { set get }
+    var delegate: BalanceFetchResultDelegate? { set get }
     func fetchMyBalance()
+}
+
+protocol BalanceFetchResultDelegate: AnyObject {
+    func balanceFetchSuccess()
+    func balanceFetchFailure(error: Error)
 }
 
 final class MyBalanceViewModel: BalanceViewModel {
@@ -19,11 +23,9 @@ final class MyBalanceViewModel: BalanceViewModel {
 
     private let networkService: NetworkService
 
+    weak var delegate: BalanceFetchResultDelegate?
+
     var amount: Int?
-
-    var onFetchBalanceSucceed: (() -> Void)?
-
-    var onFetchBalanceFailure: ((Error) -> Void)?
 
     // MARK: - Initialization
 
@@ -40,9 +42,9 @@ final class MyBalanceViewModel: BalanceViewModel {
             switch result {
             case .success(let amount):
                 KeychainHelper.standard.save(amount.amount.toData(), service: "balance")
-                self?.onFetchBalanceSucceed?()
+                self?.delegate?.balanceFetchSuccess()
             case .failure(let error):
-                self?.onFetchBalanceFailure?(error)
+                self?.delegate?.balanceFetchFailure(error: error)
             }
         }
     }

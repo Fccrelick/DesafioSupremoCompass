@@ -10,9 +10,13 @@ import Foundation
 protocol DetailStatementViewModel {
     var item: Item { get }
     var details: DetailStatementResponseModel? { set get }
-    var onFetchDetailsSucceed: (() -> Void)? { set get }
-    var onFetchDetailsFailure: ((Error) -> Void)? { set get }
+    var delegate: DetailFetchResultDelegate? { get set }
     func fetchMyStatement(withID ID: String?)
+}
+
+protocol DetailFetchResultDelegate: AnyObject {
+    func detailFetchSuccess()
+    func detailFetchFailure(error: Error)
 }
 
 final class MyDetailStatementViewModel: DetailStatementViewModel {
@@ -20,13 +24,11 @@ final class MyDetailStatementViewModel: DetailStatementViewModel {
 
     private let networkService: NetworkService
 
+    weak var delegate: DetailFetchResultDelegate?
+
     var item: Item
 
     var details: DetailStatementResponseModel?
-
-    var onFetchDetailsSucceed: (() -> Void)?
-
-    var onFetchDetailsFailure: ((Error) -> Void)?
 
     // MARK: - Initialization
 
@@ -47,9 +49,9 @@ final class MyDetailStatementViewModel: DetailStatementViewModel {
             switch result{
             case .success(let details):
                 self?.details = details
-                self?.onFetchDetailsSucceed?()
+                self?.delegate?.detailFetchSuccess()
             case .failure(let error):
-                self?.onFetchDetailsFailure?(error)
+                self?.delegate?.detailFetchFailure(error: error)
             }
         }
     }

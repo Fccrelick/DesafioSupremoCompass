@@ -9,15 +9,21 @@ import Foundation
 
 protocol StatementViewModel {
     var MyStatements: [Item]? { set get }
-    var onFetchStatementSucceed: (() -> Void)? { set get }
-    var onFetchStatementFailure: ((Error) -> Void)? { set get }
+    var delegate: StatementFetchResultDelegate? { get set }
     func fetchMyStatement(pagination: Bool)
+}
+
+protocol StatementFetchResultDelegate: AnyObject {
+    func StatementFetchSuccess()
+    func StatementFetchFailure(error: Error)
 }
 
 final class MyStatementViewModel: StatementViewModel {
     // MARK: - Instance Properties
 
     private let networkService: NetworkService
+
+    weak var delegate: StatementFetchResultDelegate?
 
     var MyStatements: [Item]?
 
@@ -56,7 +62,7 @@ final class MyStatementViewModel: StatementViewModel {
 
                 }
 
-                self?.onFetchStatementSucceed?()
+                self?.delegate?.StatementFetchSuccess()
 
                 if pagination {
                     self?.isPaginating = false
@@ -64,7 +70,7 @@ final class MyStatementViewModel: StatementViewModel {
 
                 self?.paginationIndex += 1
             case .failure(let error):
-                self?.onFetchStatementFailure?(error)
+                self?.delegate?.StatementFetchFailure(error: error)
 
                 if pagination {
                     self?.isPaginating = false
