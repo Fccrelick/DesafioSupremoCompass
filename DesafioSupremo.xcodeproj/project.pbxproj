@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5E096B6628830637005E4796 /* DateFormatterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E096B6528830637005E4796 /* DateFormatterExtension.swift */; };
 		5E096B6828831066005E4796 /* ItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E096B6728831066005E4796 /* ItemType.swift */; };
+		5E096B7028834F96005E4796 /* DesafioSupremoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E096B6F28834F96005E4796 /* DesafioSupremoTests.swift */; };
 		5E8E5901287CD6490047F287 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8E5900287CD6490047F287 /* AppDelegate.swift */; };
 		5E8E5903287CD6490047F287 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8E5902287CD6490047F287 /* SceneDelegate.swift */; };
 		5E8E5908287CD6490047F287 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E8E5906287CD6490047F287 /* Main.storyboard */; };
@@ -50,9 +51,21 @@
 		5EF8A3292880F56600B641AC /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF8A3282880F56600B641AC /* DetailViewModel.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		5E096B7128834F96005E4796 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5E8E58F5287CD6490047F287 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5E8E58FC287CD6490047F287;
+			remoteInfo = DesafioSupremo;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		5E096B6528830637005E4796 /* DateFormatterExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterExtension.swift; sourceTree = "<group>"; };
 		5E096B6728831066005E4796 /* ItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemType.swift; sourceTree = "<group>"; };
+		5E096B6D28834F95005E4796 /* DesafioSupremoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DesafioSupremoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5E096B6F28834F96005E4796 /* DesafioSupremoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesafioSupremoTests.swift; sourceTree = "<group>"; };
 		5E8E58FD287CD6490047F287 /* DesafioSupremo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DesafioSupremo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E8E5900287CD6490047F287 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5E8E5902287CD6490047F287 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -97,6 +110,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5E096B6A28834F95005E4796 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5E8E58FA287CD6490047F287 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -107,10 +127,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5E096B6E28834F96005E4796 /* DesafioSupremoTests */ = {
+			isa = PBXGroup;
+			children = (
+				5E096B6F28834F96005E4796 /* DesafioSupremoTests.swift */,
+			);
+			path = DesafioSupremoTests;
+			sourceTree = "<group>";
+		};
 		5E8E58F4287CD6490047F287 = {
 			isa = PBXGroup;
 			children = (
 				5E8E58FF287CD6490047F287 /* DesafioSupremo */,
+				5E096B6E28834F96005E4796 /* DesafioSupremoTests */,
 				5E8E58FE287CD6490047F287 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -119,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				5E8E58FD287CD6490047F287 /* DesafioSupremo.app */,
+				5E096B6D28834F95005E4796 /* DesafioSupremoTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -271,6 +301,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		5E096B6C28834F95005E4796 /* DesafioSupremoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5E096B7328834F96005E4796 /* Build configuration list for PBXNativeTarget "DesafioSupremoTests" */;
+			buildPhases = (
+				5E096B6928834F95005E4796 /* Sources */,
+				5E096B6A28834F95005E4796 /* Frameworks */,
+				5E096B6B28834F95005E4796 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5E096B7228834F96005E4796 /* PBXTargetDependency */,
+			);
+			name = DesafioSupremoTests;
+			productName = DesafioSupremoTests;
+			productReference = 5E096B6D28834F95005E4796 /* DesafioSupremoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		5E8E58FC287CD6490047F287 /* DesafioSupremo */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5E8E5911287CD64B0047F287 /* Build configuration list for PBXNativeTarget "DesafioSupremo" */;
@@ -298,6 +346,10 @@
 				LastSwiftUpdateCheck = 1340;
 				LastUpgradeCheck = 1340;
 				TargetAttributes = {
+					5E096B6C28834F95005E4796 = {
+						CreatedOnToolsVersion = 13.4.1;
+						TestTargetID = 5E8E58FC287CD6490047F287;
+					};
 					5E8E58FC287CD6490047F287 = {
 						CreatedOnToolsVersion = 13.4.1;
 					};
@@ -317,11 +369,19 @@
 			projectRoot = "";
 			targets = (
 				5E8E58FC287CD6490047F287 /* DesafioSupremo */,
+				5E096B6C28834F95005E4796 /* DesafioSupremoTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		5E096B6B28834F95005E4796 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5E8E58FB287CD6490047F287 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -336,6 +396,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5E096B6928834F95005E4796 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5E096B7028834F96005E4796 /* DesafioSupremoTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5E8E58F9287CD6490047F287 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -382,6 +450,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		5E096B7228834F96005E4796 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5E8E58FC287CD6490047F287 /* DesafioSupremo */;
+			targetProxy = 5E096B7128834F96005E4796 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		5E8E5906287CD6490047F287 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -402,6 +478,40 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		5E096B7428834F96005E4796 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.FernandoCrelick.DesafioSupremoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DesafioSupremo.app/DesafioSupremo";
+			};
+			name = Debug;
+		};
+		5E096B7528834F96005E4796 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.FernandoCrelick.DesafioSupremoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DesafioSupremo.app/DesafioSupremo";
+			};
+			name = Release;
+		};
 		5E8E590F287CD64B0047F287 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -573,6 +683,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5E096B7328834F96005E4796 /* Build configuration list for PBXNativeTarget "DesafioSupremoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5E096B7428834F96005E4796 /* Debug */,
+				5E096B7528834F96005E4796 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		5E8E58F8287CD6490047F287 /* Build configuration list for PBXProject "DesafioSupremo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
