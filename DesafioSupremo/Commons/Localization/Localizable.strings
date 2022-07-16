@@ -6,6 +6,9 @@
   
 */
 
+// MARK: - APIDateFormat
+"apiDateFormat" = "yyyy/MM/dd'T'HH:mm:ss'Z'";
+
 // MARK: - StatementController
 "statementTitle" = "Extrato";
 

@@ -8,6 +8,9 @@
 import Foundation
 
 enum LocaleKeys: String {
+    // MARK: - APIDateFormat
+    case apiDateFormat
+
     // MARK: - StatementController
     case statementTitle
 

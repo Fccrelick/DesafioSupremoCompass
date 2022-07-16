@@ -8,7 +8,7 @@
 import Foundation
 
 struct DetailStatementResponseModel: Codable {
-    var createdAt: String
+    var createdAt: Date?
     var tType: String?
     var authentication: String?
     var description: String?
@@ -19,10 +19,6 @@ struct DetailStatementResponseModel: Codable {
 }
 
 extension DetailStatementResponseModel {
-    var date: Date {
-        return createdAt.stringToDate()
-    }
-
     var itemType: ItemType? {
         switch tType {
         case ItemType.transferOut.rawValue.uppercased():

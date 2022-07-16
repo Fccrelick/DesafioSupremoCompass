@@ -76,7 +76,20 @@ final class StatementController: UIViewController, Coordinating {
         title = LocaleKeys.statementTitle.localized
     }
 
+    private func setupTableView() {
+        statementView.tableView.delegate = self
+        statementView.tableView.dataSource = self
+        statementView.tableView.register(StatementTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
+        statementView.tableView.backgroundColor = ColorPalette.white
+        statementView.tableView.separatorStyle = .none
+    }
+
     private func refreshDisplay() {
+        onSuccess()
+        onFailure()
+    }
+
+    private func onSuccess() {
         balanceViewModel.onFetchBalanceSucceed = {
             DispatchQueue.main.async {
                 let query = KeychainHelper.standard.read(service: "balance")
@@ -96,12 +109,14 @@ final class StatementController: UIViewController, Coordinating {
         }
     }
 
-    private func setupTableView() {
-        statementView.tableView.delegate = self
-        statementView.tableView.dataSource = self
-        statementView.tableView.register(StatementTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
-        statementView.tableView.backgroundColor = ColorPalette.white
-        statementView.tableView.separatorStyle = .none
+    private func onFailure() {
+        balanceViewModel.onFetchBalanceFailure = { [weak self] error in
+//            print(error)
+        }
+
+    statementViewModel.onFetchStatementFailure = { [weak self] error in
+//            print(error)
+        }
     }
 }
 

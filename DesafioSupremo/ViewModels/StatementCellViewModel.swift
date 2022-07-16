@@ -32,7 +32,12 @@ struct StatementCellViewModel {
     var dateLabel: String? {
         let formatter = DateFormatter()
         formatter.dateFormat = "dd/MM"
-        return formatter.string(from: item.date)
+
+        guard let date = item.createdAt else {
+            return nil
+        }
+
+        return formatter.string(from: date)
     }
 
     var isPix: Bool {

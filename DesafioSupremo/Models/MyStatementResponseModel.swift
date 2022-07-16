@@ -20,7 +20,7 @@ struct MyStatementResponseModel: Codable {
 }
 
 struct Item: Codable {
-    var createdAt: String
+    var createdAt: Date?
     var id: String?
     var amount: Int?
     var to: String?
@@ -32,10 +32,6 @@ struct Item: Codable {
 }
 
 extension Item {
-    var date: Date {
-        return createdAt.stringToDate()
-    }
-
     var itemType: ItemType? {
         switch tType {
         case ItemType.transferOut.rawValue.uppercased():
