@@ -11,7 +11,8 @@
 "tryAgain" = " Tente Novamente";
 "alertButtonTitle" = "Ok";
 
-// MARK: - APIDateFormat
+// MARK: - APIUtils
+"token" = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c";
 "apiDateFormat" = "yyyy/MM/dd'T'HH:mm:ss'Z'";
 
 // MARK: - ItemTypeEnum

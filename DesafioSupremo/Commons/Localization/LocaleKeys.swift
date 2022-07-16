@@ -13,7 +13,8 @@ enum LocaleKeys: String {
     case tryAgain
     case alertButtonTitle
 
-    // MARK: - APIDateFormat
+    // MARK: - APIUtils
+    case token
     case apiDateFormat
 
     // MARK: - ItemTypeEnum

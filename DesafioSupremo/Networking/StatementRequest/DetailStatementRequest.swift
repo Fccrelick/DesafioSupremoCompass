@@ -10,8 +10,6 @@ import Foundation
 struct DetailStatementRequest: DataRequest {
     typealias Response = DetailStatementResponseModel
 
-    private let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
-
     var url: String = {
         let baseURL: String = "https://bank-statement-bff.herokuapp.com"
         let path: String = "/myStatement/detail/"
@@ -24,7 +22,7 @@ struct DetailStatementRequest: DataRequest {
 
     var headers: [String : String] {
         [
-            "token" : token
+            "token" : LocaleKeys.token.localized
         ]
     }
 
