@@ -19,13 +19,9 @@ struct DetailViewModel {
         switch item.tType {
         case .transferOut:
             return false
-        case .transferIn:
-            return true
-        case .pixCashIn:
-            return true
         case .pixCashOut:
             return false
-        case .bankSlipCashIn:
+        default:
             return true
         }
 

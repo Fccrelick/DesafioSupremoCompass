@@ -43,15 +43,11 @@ struct StatementCellViewModel {
     var isPix: Bool {
 
         switch item.tType {
-        case .transferOut:
-            return false
-        case .transferIn:
-            return false
         case .pixCashIn:
             return true
         case .pixCashOut:
             return true
-        case .bankSlipCashIn:
+        default:
             return false
         }
 
