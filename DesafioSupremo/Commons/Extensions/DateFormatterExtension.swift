@@ -17,14 +17,14 @@ extension DateFormatter {
 
     static let statementDateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/MM"
+        dateFormatter.dateFormat = LocaleKeys.statementDateFormat.localized
 
         return dateFormatter
     }()
 
     static let detailDateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/MM/yyyy '-' HH:mm:ss"
+        dateFormatter.dateFormat = LocaleKeys.detailDateFormat.localized
 
         return dateFormatter
     }()

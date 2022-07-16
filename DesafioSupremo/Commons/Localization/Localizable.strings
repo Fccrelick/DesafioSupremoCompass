@@ -18,6 +18,7 @@
 
 // MARK: - StatementTableViewCell
 "pixLabel" = "Pix";
+"statementDateFormat" = "dd/MM";
 
 // MARK: - DetailView
 "titleLabel" = "Comprovante";
@@ -28,3 +29,4 @@
 "dateLocalized" = "Data/Hora";
 "authLocalized" = "Autenticação";
 "yourAccount" = "Sua Conta";
+"detailDateFormat" = "dd/MM/yyyy '-' HH:mm:ss";

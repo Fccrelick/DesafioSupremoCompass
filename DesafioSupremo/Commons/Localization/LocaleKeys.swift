@@ -20,6 +20,7 @@ enum LocaleKeys: String {
 
     // MARK: - StatementTableViewCell
     case pixLabel
+    case statementDateFormat
 
     // MARK: - DetailView
     case titleLabel
@@ -30,6 +31,7 @@ enum LocaleKeys: String {
     case dateLocalized
     case authLocalized
     case yourAccount
+    case detailDateFormat
 
     var localized: String { NSLocalizedString(rawValue, comment: "") }
 }
