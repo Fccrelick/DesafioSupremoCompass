@@ -11,7 +11,7 @@ protocol DetailStatementViewModel {
     var item: Item { get }
     var details: DetailStatementResponseModel? { set get }
     var delegate: DetailFetchResultDelegate? { get set }
-    func fetchMyStatement(withID ID: String?)
+    func fetchMyStatement()
 }
 
 protocol DetailFetchResultDelegate: AnyObject {
@@ -35,12 +35,12 @@ final class MyDetailStatementViewModel: DetailStatementViewModel {
     init(networkService: NetworkService, item: Item){
         self.networkService = networkService
         self.item = item
-        fetchMyStatement(withID: item.id)
+
     }
 
     // MARK: - Functions
-    func fetchMyStatement(withID ID: String?) {
-        guard let ID = ID else {
+    func fetchMyStatement() {
+        guard let ID = item.id else {
             return
         }
 

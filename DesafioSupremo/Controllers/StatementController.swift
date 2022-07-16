@@ -48,6 +48,8 @@ final class StatementController: UIViewController, Coordinating {
 
         balanceViewModel.delegate = self
         statementViewModel.delegate = self
+        balanceViewModel.fetchMyBalance()
+        statementViewModel.fetchMyStatement()
         setup()
     }
 

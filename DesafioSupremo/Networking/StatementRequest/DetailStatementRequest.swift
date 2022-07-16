@@ -15,7 +15,7 @@ struct DetailStatementRequest: DataRequest {
     var url: String = {
         let baseURL: String = "https://bank-statement-bff.herokuapp.com"
         let path: String = "/myStatement/detail/"
-        return baseURL + path
+        return ""
     }()
 
     var method: HTTPMethod {

@@ -39,7 +39,7 @@ final class MyStatementViewModel: StatementViewModel {
 
     init(networkService: NetworkService) {
         self.networkService = networkService
-        fetchMyStatement(pagination: false)
+
     }
 
     // MARK: - Functions

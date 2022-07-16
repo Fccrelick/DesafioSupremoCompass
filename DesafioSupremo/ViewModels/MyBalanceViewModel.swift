@@ -31,7 +31,7 @@ final class MyBalanceViewModel: BalanceViewModel {
 
     init(networkService: NetworkService){
         self.networkService = networkService
-        fetchMyBalance()
+
     }
 
     // MARK: - Functions

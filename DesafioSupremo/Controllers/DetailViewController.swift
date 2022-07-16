@@ -40,6 +40,7 @@ final class DetailViewController: UIViewController, Coordinating {
         super.viewDidLoad()
 
         detailStatementViewModel.delegate = self
+        detailStatementViewModel.fetchMyStatement()
         setup()
     }
 
