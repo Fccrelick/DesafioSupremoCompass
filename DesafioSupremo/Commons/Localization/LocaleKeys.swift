@@ -45,6 +45,7 @@ enum LocaleKeys: String {
     case authLocalized
     case yourAccount
     case detailDateFormat
+    case shareButtonLabel
 
     var localized: String { NSLocalizedString(rawValue, comment: "") }
 }

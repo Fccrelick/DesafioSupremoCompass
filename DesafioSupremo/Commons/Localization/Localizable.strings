@@ -43,3 +43,4 @@
 "authLocalized" = "Autenticação";
 "yourAccount" = "Sua Conta";
 "detailDateFormat" = "dd/MM/yyyy '-' HH:mm:ss";
+"shareButtonLabel" = "Compartilhar";

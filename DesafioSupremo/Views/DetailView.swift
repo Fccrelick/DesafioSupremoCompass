@@ -200,7 +200,7 @@ final class DetailView: UIView {
         let button = UIButton(type: .system)
         button.backgroundColor = ColorPalette.cyan
         button.setTitleColor(ColorPalette.white, for: .normal)
-        button.setTitle("Compartilhar", for: .normal)
+        button.setTitle(LocaleKeys.shareButtonLabel.localized, for: .normal)
 
         return button
     }()
@@ -273,7 +273,7 @@ extension DetailView: ViewCoding {
 
         shareButton
             .anchorHorizontal(left: leftAnchor, right: rightAnchor, leftConstant: 10, rightConstant: 10)
-            .anchorVertical(bottom: safeAreaLayoutGuide.bottomAnchor)
+            .anchorVertical(bottom: safeAreaLayoutGuide.bottomAnchor, bottomConstant: 10)
             .anchorSize(heightConstant: 50)
 
         setupStackViewConstraints()
