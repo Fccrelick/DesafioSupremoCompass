@@ -298,18 +298,6 @@ extension DetailView: ViewCoding {
     }
 
     func setupStackViews() {
-        addSubview(transactionTypeLocalized)
-        addSubview(transactionTypeLabel)
-        addSubview(valueLocalized)
-        addSubview(valueLabel)
-        addSubview(toLocalized)
-        addSubview(toLabel)
-        addSubview(bankLocalized)
-        addSubview(bankLabel)
-        addSubview(dateLocalized)
-        addSubview(dateLabel)
-        addSubview(authLocalized)
-        addSubview(authLabel)
         transactionTypeStackView.addArrangedSubview(transactionTypeLocalized)
         transactionTypeStackView.addArrangedSubview(transactionTypeLabel)
         valueStackView.addArrangedSubview(valueLocalized)
