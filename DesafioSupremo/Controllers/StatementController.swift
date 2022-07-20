@@ -14,9 +14,9 @@ final class StatementController: UIViewController, Coordinating {
 
     var coordinator: Coordinator?
 
-    var balanceViewModel: MyBalanceViewModel
+    var balanceViewModel: BalanceViewModel
 
-    var statementViewModel: MyStatementViewModel
+    var statementViewModel: StatementViewModel
 
     var viewAppeared = false
 
@@ -26,7 +26,7 @@ final class StatementController: UIViewController, Coordinating {
 
     // MARK: - Initialization
 
-     init(balanceViewModel: MyBalanceViewModel, statementViewModel: MyStatementViewModel) {
+     init(balanceViewModel: BalanceViewModel, statementViewModel: StatementViewModel) {
         self.balanceViewModel = balanceViewModel
         self.statementViewModel = statementViewModel
          super.init(nibName: nil, bundle: nil)
@@ -49,7 +49,7 @@ final class StatementController: UIViewController, Coordinating {
         balanceViewModel.delegate = self
         statementViewModel.delegate = self
         balanceViewModel.fetchMyBalance()
-        statementViewModel.fetchMyStatement()
+        statementViewModel.fetchMyStatement(pagination: false)
         setup()
     }
 
