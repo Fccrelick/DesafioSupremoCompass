@@ -9,7 +9,7 @@ import Foundation
 
 protocol DetailStatementViewModel {
     var item: Item { get }
-    var details: DetailStatementResponseModel? { set get }
+    var details: DetailStatementResponseModel? { get }
     var delegate: DetailFetchResultDelegate? { get set }
     func fetchMyStatement()
 }

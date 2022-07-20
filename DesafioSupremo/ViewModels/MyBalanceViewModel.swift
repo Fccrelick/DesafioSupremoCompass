@@ -8,7 +8,7 @@
 import Foundation
 
 protocol BalanceViewModel {
-    var amount: Int? { set get }
+    var amount: Int? { get }
     var delegate: BalanceFetchResultDelegate? { set get }
     func fetchMyBalance()
 }

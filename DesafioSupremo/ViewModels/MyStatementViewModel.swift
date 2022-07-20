@@ -8,9 +8,9 @@
 import Foundation
 
 protocol StatementViewModel {
-    var MyStatements: [Item]? { set get }
+    var MyStatements: [Item]? { get }
     var delegate: StatementFetchResultDelegate? { get set }
-    var paginationIndex: Int { set get }
+    var paginationIndex: Int { get }
     var isPaginating: Bool { get }
     func fetchMyStatement(pagination: Bool)
 }
