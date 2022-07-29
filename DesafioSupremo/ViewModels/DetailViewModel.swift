@@ -36,7 +36,7 @@ struct DetailViewModel {
             return nil
         }
 
-        return String(amount)
+        return "R$ \(amount),00"
     }
 
     var toLabel: String? {

@@ -66,7 +66,7 @@ final class DetailView: UIView {
 
     private let valueLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 14)
+        label.font = .systemFont(ofSize: 16)
 
         return label
     }()
